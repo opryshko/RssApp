@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<item
+    android:id="@+id/audiobooks"
+    android:icon="@drawable/ic_library_music"
+    android:title="@string/audiobooks"/>
+
+    <item
+        android:id="@+id/movies"
+        android:icon="@drawable/ic_movie"
+        android:title="@string/movies"/>
+
+    <item
+        android:id="@+id/podcasts"
+        android:icon="@drawable/ic_headset_mic"
+        android:title="@string/podcasts"/>
+    <item
+        android:id="@+id/favourites"
+        android:icon="@drawable/ic_favorite"
+        android:title="@string/favourites"/>
+</menu>

@@ -13,7 +13,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RssTestAppClient {
-    private static final String ENDPOINT = "url";
+    private static final String ENDPOINT = "https://rss.itunes.apple.com/api/v1/us/";
     private static Retrofit retrofit;
     private static OkHttpClient.Builder client = new OkHttpClient.Builder();
 
