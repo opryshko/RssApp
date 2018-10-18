@@ -1,4 +1,4 @@
-package com.geekapps.rsstestapp.ui.movies;
+package com.geekapps.rsstestapp.ui.categories.movies;
 
 
 import android.os.Bundle;
@@ -10,10 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.geekapps.rsstestapp.R;
-import com.geekapps.rsstestapp.data.network.pojo.MediaContent;
+import com.geekapps.rsstestapp.data.network.pojo.category.MediaContent;
 import com.geekapps.rsstestapp.mvp.BaseMvpFragment;
 import com.geekapps.rsstestapp.ui.MediaAdapter;
-import com.geekapps.rsstestapp.ui.movies.impl.MoviesPresenter;
+import com.geekapps.rsstestapp.ui.categories.movies.impl.MoviesPresenter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -48,7 +48,7 @@ public class MoviesFragment extends BaseMvpFragment implements MoviesView {
     @Override
     public void initRecyclerView(MediaContent mediaContent) {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setAdapter(new MediaAdapter(mediaContent, getContext()));
+        recyclerView.setAdapter(new MediaAdapter(mediaContent, this));
     }
 }
 

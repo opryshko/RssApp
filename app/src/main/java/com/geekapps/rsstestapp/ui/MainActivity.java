@@ -1,16 +1,17 @@
 package com.geekapps.rsstestapp.ui;
 
+import android.app.FragmentTransaction;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.geekapps.rsstestapp.R;
 import com.geekapps.rsstestapp.mvp.BaseMvpActivity;
-import com.geekapps.rsstestapp.ui.audiobooks.AudiobooksFragment;
-import com.geekapps.rsstestapp.ui.movies.MoviesFragment;
+import com.geekapps.rsstestapp.ui.categories.audiobooks.AudiobooksFragment;
+import com.geekapps.rsstestapp.ui.categories.movies.MoviesFragment;
+import com.geekapps.rsstestapp.ui.categories.podcasts.PodcastsFragment;
 
 import java.util.HashMap;
 
@@ -30,6 +31,8 @@ public class MainActivity extends BaseMvpActivity {
         ButterKnife.bind(this);
 
         fragments = new HashMap<>();
+        fragments.put("mediaContent", new AudiobooksFragment());
+        replaceFragment(fragments.get("mediaContent"));
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -46,9 +49,13 @@ public class MainActivity extends BaseMvpActivity {
                             fragments.put("movies", new MoviesFragment());
                         selectedTab = "movies";
                         break;
+                    case R.id.podcasts:
+                        if (!fragments.containsKey("podcasts"))
+                            fragments.put("podcasts", new PodcastsFragment());
+                        selectedTab = "podcasts";
                 }
 
-                getSupportFragmentManager().beginTransaction().replace(R.id.category_fragment_container, fragments.get(selectedTab)).commit();
+                replaceFragment(fragments.get(selectedTab));
                 return true;
             }
         });
@@ -56,11 +63,20 @@ public class MainActivity extends BaseMvpActivity {
 
     @Override
     public void addFragment(Fragment fragment) {
-
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.category_fragment_container, fragment)
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                .addToBackStack(null)
+                .commit();
     }
 
     @Override
     public void replaceFragment(Fragment fragment) {
-
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.category_fragment_container, fragment)
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                .commit();
     }
 }

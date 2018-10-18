@@ -1,9 +1,9 @@
-package com.geekapps.rsstestapp.ui.movies.impl;
+package com.geekapps.rsstestapp.ui.categories.movies.impl;
 
-import com.geekapps.rsstestapp.data.network.pojo.MediaContent;
+import com.geekapps.rsstestapp.data.network.pojo.category.MediaContent;
 import com.geekapps.rsstestapp.mvp.BaseMvpPresenter;
-import com.geekapps.rsstestapp.ui.movies.MoviesModel;
-import com.geekapps.rsstestapp.ui.movies.MoviesView;
+import com.geekapps.rsstestapp.ui.categories.movies.MoviesModel;
+import com.geekapps.rsstestapp.ui.categories.movies.MoviesView;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;

@@ -1,9 +1,9 @@
-package com.geekapps.rsstestapp.ui.audiobooks.impl;
+package com.geekapps.rsstestapp.ui.categories.audiobooks.impl;
 
-import com.geekapps.rsstestapp.data.network.pojo.MediaContent;
+import com.geekapps.rsstestapp.data.network.pojo.category.MediaContent;
 import com.geekapps.rsstestapp.mvp.BaseMvpPresenter;
-import com.geekapps.rsstestapp.ui.audiobooks.AudiobooksModel;
-import com.geekapps.rsstestapp.ui.audiobooks.AudiobooksView;
+import com.geekapps.rsstestapp.ui.categories.audiobooks.AudiobooksModel;
+import com.geekapps.rsstestapp.ui.categories.audiobooks.AudiobooksView;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;

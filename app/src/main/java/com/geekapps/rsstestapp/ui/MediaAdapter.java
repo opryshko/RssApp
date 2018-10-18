@@ -1,6 +1,5 @@
 package com.geekapps.rsstestapp.ui;
 
-import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,17 +10,18 @@ import android.widget.TextView;
 
 import com.geekapps.rsstestapp.R;
 import com.geekapps.rsstestapp.data.GlideImageLoader;
-import com.geekapps.rsstestapp.data.network.pojo.MediaContent;
+import com.geekapps.rsstestapp.data.network.pojo.category.MediaContent;
+import com.geekapps.rsstestapp.ui.categories.CategoryView;
 
 public class MediaAdapter extends RecyclerView.Adapter<MediaAdapter.MediaViewHolder> {
 
     MediaContent mediaContent;
-    Context context;
+    CategoryView categoryView;
 
 
-    public MediaAdapter(MediaContent mediaContent, Context context) {
+    public MediaAdapter(MediaContent mediaContent, CategoryView categoryView) {
         this.mediaContent = mediaContent;
-        this.context = context;
+        this.categoryView = categoryView;
     }
 
     @NonNull
@@ -33,7 +33,7 @@ public class MediaAdapter extends RecyclerView.Adapter<MediaAdapter.MediaViewHol
 
     @Override
     public void onBindViewHolder(@NonNull MediaViewHolder holder, int position) {
-        GlideImageLoader.loadImage(mediaContent.getFeed().getResults().get(position).getArtworkUrl100(), holder.logo, context);
+        GlideImageLoader.loadImage(mediaContent.getFeed().getResults().get(position).getArtworkUrl100(), holder.logo, categoryView.getContext());
         holder.name.setText(mediaContent.getFeed().getResults().get(position).getName());
         holder.artist.setText(mediaContent.getFeed().getResults().get(position).getArtistName());
         holder.star.setImageResource(R.drawable.ic_star_border);

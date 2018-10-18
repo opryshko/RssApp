@@ -1,5 +1,5 @@
 
-package com.geekapps.rsstestapp.data.network.pojo;
+package com.geekapps.rsstestapp.data.network.pojo.category;
 
 import java.util.List;
 import com.google.gson.annotations.Expose;
