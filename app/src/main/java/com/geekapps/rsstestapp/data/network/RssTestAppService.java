@@ -2,8 +2,10 @@ package com.geekapps.rsstestapp.data.network;
 
 import io.reactivex.Observable;
 import okhttp3.ResponseBody;
+import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.http.GET;
+import retrofit2.http.Query;
 
 public interface RssTestAppService {
 
@@ -15,4 +17,7 @@ public interface RssTestAppService {
 
     @GET("podcasts/top-podcasts/all/25/non-explicit.json")
     Observable<Response<ResponseBody>> getTop25Podcasts();
+
+    @GET("https://itunes.apple.com/lookup?")
+    Observable<Response<ResponseBody>> getDetailInformation(@Query("id") Integer id);
 }

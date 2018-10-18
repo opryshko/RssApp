@@ -5,7 +5,7 @@ import com.geekapps.rsstestapp.mvp.BaseMvpView;
 
 public interface CategoryView extends BaseMvpView {
 
-    void replaceFragment();
+    void showDetailInformation(Integer id);
 
     void initRecyclerView(MediaContent mediaContent);
 }

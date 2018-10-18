@@ -1,6 +1,7 @@
 package com.geekapps.rsstestapp.ui;
 
 import android.support.annotation.NonNull;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,6 +48,13 @@ public class MediaAdapter extends RecyclerView.Adapter<MediaAdapter.MediaViewHol
             }
         });
 
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                categoryView.showDetailInformation(mediaContent.getFeed().getResults().get(position).getId());
+            }
+        });
+
     }
 
     @Override
@@ -56,6 +64,7 @@ public class MediaAdapter extends RecyclerView.Adapter<MediaAdapter.MediaViewHol
 
 
     public static class MediaViewHolder extends RecyclerView.ViewHolder {
+        CardView cardView;
         TextView name;
         TextView artist;
         ImageView logo;
@@ -64,6 +73,7 @@ public class MediaAdapter extends RecyclerView.Adapter<MediaAdapter.MediaViewHol
 
         MediaViewHolder(View itemView) {
             super(itemView);
+            cardView = (CardView) itemView.findViewById(R.id.cv);
             name = (TextView) itemView.findViewById(R.id.name);
             artist = (TextView) itemView.findViewById(R.id.artist);
             logo = (ImageView) itemView.findViewById(R.id.logo);
