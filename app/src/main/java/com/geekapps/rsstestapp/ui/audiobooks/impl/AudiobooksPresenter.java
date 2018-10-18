@@ -28,6 +28,7 @@ public class AudiobooksPresenter extends BaseMvpPresenter {
     }
 
     private void handleGetTop25AudiobooksResponse(Audiobooks audiobooks) {
+        view.initRecyclerView(audiobooks);
         view.hideLoading();
     }
 }

@@ -13,7 +13,7 @@ public class GlideImageLoader {
 
     public static ViewTarget<ImageView, Drawable> loadImage(String url, ImageView imageView, Context context) {
         return Glide.with(context)
-                .setDefaultRequestOptions(new RequestOptions().centerCrop().placeholder(R.drawable.ic_placeholder_image).error(R.drawable.ic_broken_image))
+                .setDefaultRequestOptions(new RequestOptions().circleCrop().placeholder(R.drawable.ic_placeholder_image).error(R.drawable.ic_broken_image))
                 .load(url == null ? "" : url)
                 .into(imageView);
     }
