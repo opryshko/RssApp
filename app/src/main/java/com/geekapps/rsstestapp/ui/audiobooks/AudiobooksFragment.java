@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.geekapps.rsstestapp.R;
-import com.geekapps.rsstestapp.data.network.pojo.Audiobooks;
+import com.geekapps.rsstestapp.data.network.pojo.MediaContent;
 import com.geekapps.rsstestapp.mvp.BaseMvpFragment;
 import com.geekapps.rsstestapp.ui.MediaAdapter;
 import com.geekapps.rsstestapp.ui.audiobooks.impl.AudiobooksPresenter;
@@ -45,8 +45,8 @@ public class AudiobooksFragment extends BaseMvpFragment implements AudiobooksVie
     }
 
     @Override
-    public void initRecyclerView(Audiobooks audiobooks) {
+    public void initRecyclerView(MediaContent mediaContent) {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setAdapter(new MediaAdapter(audiobooks, getContext()));
+        recyclerView.setAdapter(new MediaAdapter(mediaContent, getContext()));
     }
 }

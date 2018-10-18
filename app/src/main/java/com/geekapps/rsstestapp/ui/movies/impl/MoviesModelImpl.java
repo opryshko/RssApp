@@ -2,9 +2,8 @@ package com.geekapps.rsstestapp.ui.movies.impl;
 
 import com.geekapps.rsstestapp.data.network.RssTestAppClient;
 import com.geekapps.rsstestapp.data.network.RssTestAppService;
-import com.geekapps.rsstestapp.data.network.pojo.Audiobooks;
+import com.geekapps.rsstestapp.data.network.pojo.MediaContent;
 import com.geekapps.rsstestapp.mvp.BaseMvpModel;
-import com.geekapps.rsstestapp.ui.audiobooks.AudiobooksModel;
 import com.geekapps.rsstestapp.ui.movies.MoviesModel;
 import com.google.gson.GsonBuilder;
 
@@ -21,7 +20,7 @@ public class MoviesModelImpl extends BaseMvpModel implements MoviesModel {
     private RssTestAppService api = RssTestAppClient.getClient().create(RssTestAppService.class);
 
     @Override
-    public Observable<Audiobooks> getTop25Movies() {
+    public Observable<MediaContent> getTop25Movies() {
         return api.getTop25Movies()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -29,7 +28,7 @@ public class MoviesModelImpl extends BaseMvpModel implements MoviesModel {
                 .map(this::parseGetTop25Movies);
     }
 
-    private Audiobooks parseGetTop25Movies(Response<ResponseBody> bodyResponse) throws IOException {
-        return new GsonBuilder().create().fromJson(bodyResponse.body().string(), Audiobooks.class);
+    private MediaContent parseGetTop25Movies(Response<ResponseBody> bodyResponse) throws IOException {
+        return new GsonBuilder().create().fromJson(bodyResponse.body().string(), MediaContent.class);
     }
 }

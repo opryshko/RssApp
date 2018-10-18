@@ -1,12 +1,10 @@
 package com.geekapps.rsstestapp.ui.audiobooks;
 
-import com.geekapps.rsstestapp.data.network.pojo.Audiobooks;
-
-import java.util.HashMap;
+import com.geekapps.rsstestapp.data.network.pojo.MediaContent;
 
 import io.reactivex.Observable;
 
 public interface AudiobooksModel {
 
-    Observable<Audiobooks> getTop25Audiobooks();
+    Observable<MediaContent> getTop25Audiobooks();
 }

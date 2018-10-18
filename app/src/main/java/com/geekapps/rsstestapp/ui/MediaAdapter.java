@@ -2,7 +2,6 @@ package com.geekapps.rsstestapp.ui;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,15 +11,15 @@ import android.widget.TextView;
 
 import com.geekapps.rsstestapp.R;
 import com.geekapps.rsstestapp.data.GlideImageLoader;
-import com.geekapps.rsstestapp.data.network.pojo.Audiobooks;
+import com.geekapps.rsstestapp.data.network.pojo.MediaContent;
 
 public class MediaAdapter extends RecyclerView.Adapter<MediaAdapter.MediaViewHolder> {
 
-    Audiobooks audiobooks;
+    MediaContent mediaContent;
     Context context;
 
-    public MediaAdapter(Audiobooks audiobooks, Context context) {
-        this.audiobooks = audiobooks;
+    public MediaAdapter(MediaContent mediaContent, Context context) {
+        this.mediaContent = mediaContent;
         this.context = context;
     }
 
@@ -33,14 +32,14 @@ public class MediaAdapter extends RecyclerView.Adapter<MediaAdapter.MediaViewHol
 
     @Override
     public void onBindViewHolder(@NonNull MediaViewHolder holder, int position) {
-        holder.name.setText(audiobooks.getFeed().getResults().get(position).getName());
-        holder.artist.setText(audiobooks.getFeed().getResults().get(position).getArtistName());
-        GlideImageLoader.loadImage(audiobooks.getFeed().getResults().get(position).getArtworkUrl100(), holder.logo, context);
+        holder.name.setText(mediaContent.getFeed().getResults().get(position).getName());
+        holder.artist.setText(mediaContent.getFeed().getResults().get(position).getArtistName());
+        GlideImageLoader.loadImage(mediaContent.getFeed().getResults().get(position).getArtworkUrl100(), holder.logo, context);
     }
 
     @Override
     public int getItemCount() {
-        return audiobooks.getFeed().getResults().size();
+        return mediaContent.getFeed().getResults().size();
     }
 
     public static class MediaViewHolder extends RecyclerView.ViewHolder {

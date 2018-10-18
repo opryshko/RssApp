@@ -37,9 +37,9 @@ public class MainActivity extends BaseMvpActivity {
 
                 switch (menuItem.getItemId()) {
                     case R.id.audiobooks:
-                        if (!fragments.containsKey("audiobooks"))
-                            fragments.put("audiobooks", new AudiobooksFragment());
-                        selectedTab = "audiobooks";
+                        if (!fragments.containsKey("mediaContent"))
+                            fragments.put("mediaContent", new AudiobooksFragment());
+                        selectedTab = "mediaContent";
                         break;
                     case R.id.movies:
                         if (!fragments.containsKey("movies"))

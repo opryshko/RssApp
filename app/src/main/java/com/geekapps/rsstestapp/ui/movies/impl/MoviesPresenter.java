@@ -1,9 +1,7 @@
 package com.geekapps.rsstestapp.ui.movies.impl;
 
-import com.geekapps.rsstestapp.data.network.pojo.Audiobooks;
+import com.geekapps.rsstestapp.data.network.pojo.MediaContent;
 import com.geekapps.rsstestapp.mvp.BaseMvpPresenter;
-import com.geekapps.rsstestapp.ui.audiobooks.AudiobooksModel;
-import com.geekapps.rsstestapp.ui.audiobooks.AudiobooksView;
 import com.geekapps.rsstestapp.ui.movies.MoviesModel;
 import com.geekapps.rsstestapp.ui.movies.MoviesView;
 
@@ -29,8 +27,8 @@ public class MoviesPresenter extends BaseMvpPresenter {
 
     }
 
-    private void handleGetTop25MoviesResponse(Audiobooks audiobooks) {
-        view.initRecyclerView(audiobooks);
+    private void handleGetTop25MoviesResponse(MediaContent mediaContent) {
+        view.initRecyclerView(mediaContent);
         view.hideLoading();
     }
 }

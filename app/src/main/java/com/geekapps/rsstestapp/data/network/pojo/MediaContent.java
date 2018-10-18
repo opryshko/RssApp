@@ -4,7 +4,7 @@ package com.geekapps.rsstestapp.data.network.pojo;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Audiobooks {
+public class MediaContent {
 
     @SerializedName("feed")
     @Expose
