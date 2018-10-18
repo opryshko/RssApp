@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import com.geekapps.rsstestapp.R;
 import com.geekapps.rsstestapp.mvp.BaseMvpActivity;
 import com.geekapps.rsstestapp.ui.audiobooks.AudiobooksFragment;
+import com.geekapps.rsstestapp.ui.movies.MoviesFragment;
 
 import java.util.HashMap;
 
@@ -39,11 +40,12 @@ public class MainActivity extends BaseMvpActivity {
                         if (!fragments.containsKey("audiobooks"))
                             fragments.put("audiobooks", new AudiobooksFragment());
                         selectedTab = "audiobooks";
+                        break;
                     case R.id.movies:
-                        if (!fragments.containsKey("audiobooks"))
-                            fragments.put("audiobooks", new AudiobooksFragment());
-                        selectedTab = "audiobooks";
-
+                        if (!fragments.containsKey("movies"))
+                            fragments.put("movies", new MoviesFragment());
+                        selectedTab = "movies";
+                        break;
                 }
 
                 getSupportFragmentManager().beginTransaction().replace(R.id.category_fragment_container, fragments.get(selectedTab)).commit();

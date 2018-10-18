@@ -44,14 +44,12 @@ public class MediaAdapter extends RecyclerView.Adapter<MediaAdapter.MediaViewHol
     }
 
     public static class MediaViewHolder extends RecyclerView.ViewHolder {
-        CardView cv;
         TextView name;
         TextView artist;
         ImageView logo;
 
         MediaViewHolder(View itemView) {
             super(itemView);
-            cv = (CardView) itemView.findViewById(R.id.cv);
             name = (TextView) itemView.findViewById(R.id.name);
             artist = (TextView) itemView.findViewById(R.id.artist);
             logo = (ImageView) itemView.findViewById(R.id.logo);
