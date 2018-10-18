@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.geekapps.rsstestapp.R;
 import com.geekapps.rsstestapp.data.network.pojo.MediaContent;
@@ -16,6 +17,7 @@ import com.geekapps.rsstestapp.ui.audiobooks.impl.AudiobooksPresenter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class AudiobooksFragment extends BaseMvpFragment implements AudiobooksView {
 

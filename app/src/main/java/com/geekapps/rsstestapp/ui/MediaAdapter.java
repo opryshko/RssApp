@@ -18,6 +18,7 @@ public class MediaAdapter extends RecyclerView.Adapter<MediaAdapter.MediaViewHol
     MediaContent mediaContent;
     Context context;
 
+
     public MediaAdapter(MediaContent mediaContent, Context context) {
         this.mediaContent = mediaContent;
         this.context = context;
@@ -32,9 +33,20 @@ public class MediaAdapter extends RecyclerView.Adapter<MediaAdapter.MediaViewHol
 
     @Override
     public void onBindViewHolder(@NonNull MediaViewHolder holder, int position) {
+        GlideImageLoader.loadImage(mediaContent.getFeed().getResults().get(position).getArtworkUrl100(), holder.logo, context);
         holder.name.setText(mediaContent.getFeed().getResults().get(position).getName());
         holder.artist.setText(mediaContent.getFeed().getResults().get(position).getArtistName());
-        GlideImageLoader.loadImage(mediaContent.getFeed().getResults().get(position).getArtworkUrl100(), holder.logo, context);
+        holder.star.setImageResource(R.drawable.ic_star_border);
+        holder.star.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (holder.isSelected)
+                    holder.setStarSelection(false);
+                else holder.setStarSelection(true);
+
+            }
+        });
+
     }
 
     @Override
@@ -42,17 +54,32 @@ public class MediaAdapter extends RecyclerView.Adapter<MediaAdapter.MediaViewHol
         return mediaContent.getFeed().getResults().size();
     }
 
+
     public static class MediaViewHolder extends RecyclerView.ViewHolder {
         TextView name;
         TextView artist;
         ImageView logo;
+        ImageView star;
+        Boolean isSelected;
 
         MediaViewHolder(View itemView) {
             super(itemView);
             name = (TextView) itemView.findViewById(R.id.name);
             artist = (TextView) itemView.findViewById(R.id.artist);
             logo = (ImageView) itemView.findViewById(R.id.logo);
+            star = (ImageView) itemView.findViewById(R.id.star);
+            isSelected = false;
         }
+
+        private void setStarSelection(boolean state) {
+            if (state)
+                star.setImageResource(R.drawable.ic_star);
+            else
+                star.setImageResource(R.drawable.ic_star_border);
+            isSelected = state;
+        }
+
+
     }
 
 }
