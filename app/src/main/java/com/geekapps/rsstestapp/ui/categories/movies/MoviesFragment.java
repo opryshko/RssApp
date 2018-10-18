@@ -15,6 +15,7 @@ import com.geekapps.rsstestapp.mvp.BaseMvpFragment;
 import com.geekapps.rsstestapp.ui.MediaAdapter;
 import com.geekapps.rsstestapp.ui.categories.BaseCategoryFragment;
 import com.geekapps.rsstestapp.ui.categories.movies.impl.MoviesPresenter;
+import com.geekapps.rsstestapp.ui.detail_information.DetailInformationFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -29,6 +30,7 @@ public class MoviesFragment extends BaseCategoryFragment implements MoviesView {
         rootView = inflater.inflate(R.layout.fragment_movies, container, false);
         unbinder = ButterKnife.bind(this, rootView);
         presenter = new MoviesPresenter(this);
+        detailInformationFragment = new DetailInformationFragment();
         return rootView;
     }
 

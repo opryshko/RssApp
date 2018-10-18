@@ -25,7 +25,8 @@
                 android:layout_height="80dp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginRight="16dp" />
+                android:layout_marginRight="16dp"
+                android:src="@drawable/ic_placeholder_image"/>
 
             <TextView
                 android:id="@+id/name"

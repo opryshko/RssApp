@@ -17,4 +17,10 @@ public class GlideImageLoader {
                 .load(url == null ? "" : url)
                 .into(imageView);
     }
+    public static ViewTarget<ImageView, Drawable> loadRectImage(String url, ImageView imageView, Context context) {
+        return Glide.with(context)
+                .setDefaultRequestOptions(new RequestOptions().centerCrop().placeholder(R.drawable.ic_placeholder_image).error(R.drawable.ic_broken_image))
+                .load(url == null ? "" : url)
+                .into(imageView);
+    }
 }

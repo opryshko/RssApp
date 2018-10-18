@@ -2,20 +2,15 @@ package com.geekapps.rsstestapp.ui.categories.podcasts;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.geekapps.rsstestapp.R;
-import com.geekapps.rsstestapp.data.network.pojo.category.MediaContent;
-import com.geekapps.rsstestapp.mvp.BaseMvpFragment;
-import com.geekapps.rsstestapp.ui.MediaAdapter;
 import com.geekapps.rsstestapp.ui.categories.BaseCategoryFragment;
 import com.geekapps.rsstestapp.ui.categories.podcasts.impl.PodcastsPresenter;
+import com.geekapps.rsstestapp.ui.detail_information.DetailInformationFragment;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class PodcastsFragment extends BaseCategoryFragment implements PodcastsView {
@@ -28,6 +23,7 @@ public class PodcastsFragment extends BaseCategoryFragment implements PodcastsVi
         rootView = inflater.inflate(R.layout.fragment_podcasts, container, false);
         unbinder = ButterKnife.bind(this, rootView);
         presenter = new PodcastsPresenter(this);
+        detailInformationFragment = new DetailInformationFragment();
         return rootView;
     }
 

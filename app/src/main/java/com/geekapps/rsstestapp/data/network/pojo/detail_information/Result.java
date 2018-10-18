@@ -100,7 +100,7 @@ public class Result {
     }
 
     public String getCollectionName() {
-        return collectionName;
+        return collectionName == null ? "No information" : collectionName;
     }
 
     public void setCollectionName(String collectionName) {

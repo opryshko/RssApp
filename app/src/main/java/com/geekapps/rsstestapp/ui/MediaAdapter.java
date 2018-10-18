@@ -34,11 +34,11 @@ public class MediaAdapter extends RecyclerView.Adapter<MediaAdapter.MediaViewHol
 
     @Override
     public void onBindViewHolder(@NonNull MediaViewHolder holder, int position) {
-        GlideImageLoader.loadImage(mediaContent.getFeed().getResults().get(position).getArtworkUrl100(), holder.logo, categoryView.getContext());
-        holder.name.setText(mediaContent.getFeed().getResults().get(position).getName());
-        holder.artist.setText(mediaContent.getFeed().getResults().get(position).getArtistName());
-        holder.star.setImageResource(R.drawable.ic_star_border);
-        holder.star.setOnClickListener(new View.OnClickListener() {
+        GlideImageLoader.loadImage(mediaContent.getFeed().getResults().get(position).getArtworkUrl100(), holder.ivLogo, categoryView.getContext());
+        holder.tvName.setText(mediaContent.getFeed().getResults().get(position).getName());
+        holder.tvArtist.setText(mediaContent.getFeed().getResults().get(position).getArtistName());
+        holder.ivStar.setImageResource(R.drawable.ic_star_border);
+        holder.ivStar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (holder.isSelected)
@@ -65,27 +65,27 @@ public class MediaAdapter extends RecyclerView.Adapter<MediaAdapter.MediaViewHol
 
     public static class MediaViewHolder extends RecyclerView.ViewHolder {
         CardView cardView;
-        TextView name;
-        TextView artist;
-        ImageView logo;
-        ImageView star;
+        TextView tvName;
+        TextView tvArtist;
+        ImageView ivLogo;
+        ImageView ivStar;
         Boolean isSelected;
 
         MediaViewHolder(View itemView) {
             super(itemView);
             cardView = (CardView) itemView.findViewById(R.id.cv);
-            name = (TextView) itemView.findViewById(R.id.name);
-            artist = (TextView) itemView.findViewById(R.id.artist);
-            logo = (ImageView) itemView.findViewById(R.id.logo);
-            star = (ImageView) itemView.findViewById(R.id.star);
+            tvName = (TextView) itemView.findViewById(R.id.name);
+            tvArtist = (TextView) itemView.findViewById(R.id.artist);
+            ivLogo = (ImageView) itemView.findViewById(R.id.logo);
+            ivStar = (ImageView) itemView.findViewById(R.id.star);
             isSelected = false;
         }
 
         private void setStarSelection(boolean state) {
             if (state)
-                star.setImageResource(R.drawable.ic_star);
+                ivStar.setImageResource(R.drawable.ic_star);
             else
-                star.setImageResource(R.drawable.ic_star_border);
+                ivStar.setImageResource(R.drawable.ic_star_border);
             isSelected = state;
         }
 
