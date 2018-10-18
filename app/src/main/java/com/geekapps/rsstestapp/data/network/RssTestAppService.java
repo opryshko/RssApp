@@ -18,6 +18,7 @@ public interface RssTestAppService {
     @GET("podcasts/top-podcasts/all/25/non-explicit.json")
     Observable<Response<ResponseBody>> getTop25Podcasts();
 
-    @GET("https://itunes.apple.com/lookup?")
+
+    @GET("lookup?")
     Observable<Response<ResponseBody>> getDetailInformation(@Query("id") Integer id);
 }

@@ -18,7 +18,7 @@ import retrofit2.Response;
 
 public class DetailInformationModelImpl extends BaseMvpModel implements DetailInformationModel {
 
-    private RssTestAppService api = RssTestAppClient.getClient().create(RssTestAppService.class);
+    private RssTestAppService api = RssTestAppClient.getClientForDetailInformation().create(RssTestAppService.class);
 
     @Override
     public Observable<DetailInformation> getDetailInformation(Integer id) {

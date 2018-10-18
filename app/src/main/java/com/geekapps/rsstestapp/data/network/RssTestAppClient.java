@@ -1,5 +1,7 @@
 package com.geekapps.rsstestapp.data.network;
 
+import com.geekapps.rsstestapp.data.network.pojo.detail_information.DetailInformation;
+
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
@@ -13,11 +15,13 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RssTestAppClient {
-    private static final String ENDPOINT = "https://rss.itunes.apple.com/api/v1/us/";
-    private static Retrofit retrofit;
+    private static final String CATEGORIES_ENDPOINT = "https://rss.itunes.apple.com/api/v1/us/";
+    private static final String DETAIL_INFORMATION_ENDPOINT = "https://itunes.apple.com/";
+    private static Retrofit retrofitForCategory;
+    private static Retrofit retrofitForDetailInformation;
     private static OkHttpClient.Builder client = new OkHttpClient.Builder();
 
-    public static Retrofit getClient() {
+    private static OkHttpClient.Builder getBuilder() {
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
@@ -26,21 +30,34 @@ public class RssTestAppClient {
 
         client.addInterceptor(interceptor);
         client.addInterceptor(new AcceptHeaderInterceptor());
-        if (retrofit == null) {
-            retrofit = new Retrofit.Builder()
+        return client;
+    }
+
+    public static Retrofit getClientForCategory() {
+        if (retrofitForCategory == null) {
+            retrofitForCategory = new Retrofit.Builder()
                     .addConverterFactory(GsonConverterFactory.create())
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                    .baseUrl(ENDPOINT)
-                    .client(client.build())
+                    .baseUrl(CATEGORIES_ENDPOINT)
+                    .client(getBuilder().build())
                     .build();
         }
-        return retrofit;
+        return retrofitForCategory;
+    }
+
+    public static Retrofit getClientForDetailInformation() {
+        if (retrofitForDetailInformation == null) {
+            retrofitForDetailInformation = new Retrofit.Builder()
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                    .baseUrl(DETAIL_INFORMATION_ENDPOINT)
+                    .client(getBuilder().build())
+                    .build();
+        }
+        return retrofitForDetailInformation;
     }
 
     public static class AcceptHeaderInterceptor implements Interceptor {
-
-        public AcceptHeaderInterceptor() {
-        }
 
         @Override
         public Response intercept(Chain chain) throws IOException {

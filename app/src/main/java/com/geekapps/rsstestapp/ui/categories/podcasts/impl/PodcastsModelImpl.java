@@ -17,7 +17,7 @@ import retrofit2.Response;
 
 public class PodcastsModelImpl extends BaseMvpModel implements PodcastsModel {
 
-    private RssTestAppService api = RssTestAppClient.getClient().create(RssTestAppService.class);
+    private RssTestAppService api = RssTestAppClient.getClientForCategory().create(RssTestAppService.class);
 
     @Override
     public Observable<MediaContent> getTop25Podcasts() {

@@ -13,24 +13,24 @@ import com.geekapps.rsstestapp.ui.detail_information.DetailInformationFragment;
 
 import butterknife.BindView;
 
-public class BaseCategoryFragment extends BaseMvpFragment implements CategoryView {
+public abstract class BaseCategoryFragment extends BaseMvpFragment implements CategoryView {
 
     @BindView(R.id.recycler_view)
     protected RecyclerView recyclerView;
-
     protected DetailInformationFragment detailInformationFragment;
 
     @Override
     public void showDetailInformation(Integer id) {
         putItemIdToBundle(id);
         this.baseCallBack.addFragment(detailInformationFragment);
-
     }
 
     @Override
     public void initRecyclerView(MediaContent mediaContent) {
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setAdapter(new MediaAdapter(mediaContent, this));
+        if (recyclerView != null) {
+            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+            recyclerView.setAdapter(new MediaAdapter(mediaContent, this));
+        }
     }
 
     public void putItemIdToBundle(Integer id) {
@@ -38,5 +38,4 @@ public class BaseCategoryFragment extends BaseMvpFragment implements CategoryVie
         bundle.putInt("SelectedItemId", id);
         detailInformationFragment.setArguments(bundle);
     }
-
 }

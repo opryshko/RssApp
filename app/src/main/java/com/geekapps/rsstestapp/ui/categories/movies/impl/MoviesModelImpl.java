@@ -17,7 +17,7 @@ import retrofit2.Response;
 
 public class MoviesModelImpl extends BaseMvpModel implements MoviesModel {
 
-    private RssTestAppService api = RssTestAppClient.getClient().create(RssTestAppService.class);
+    private RssTestAppService api = RssTestAppClient.getClientForCategory().create(RssTestAppService.class);
 
     @Override
     public Observable<MediaContent> getTop25Movies() {
