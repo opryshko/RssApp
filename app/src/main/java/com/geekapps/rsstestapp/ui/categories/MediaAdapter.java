@@ -1,4 +1,4 @@
-package com.geekapps.rsstestapp.ui;
+package com.geekapps.rsstestapp.ui.categories;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
@@ -12,7 +12,6 @@ import android.widget.TextView;
 import com.geekapps.rsstestapp.R;
 import com.geekapps.rsstestapp.data.GlideImageLoader;
 import com.geekapps.rsstestapp.data.network.pojo.category.MediaContent;
-import com.geekapps.rsstestapp.ui.categories.CategoryView;
 
 public class MediaAdapter extends RecyclerView.Adapter<MediaAdapter.MediaViewHolder> {
 

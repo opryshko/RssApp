@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.categories.audiobooks.AudiobooksFragment">
+    tools:context=".ui.categories.audiobooks.AudiobooksFragment"
+    android:background="@android:color/background_light">
 
     <ScrollView
         android:layout_width="match_parent"

@@ -10,7 +10,14 @@
         android:id="@+id/category_fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/navigation"/>
+        android:layout_above="@id/navigation">
+
+        <com.geekapps.rsstestapp.ui.categories.CustomViewPager
+            android:id="@+id/viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true" />
+    </RelativeLayout>
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"
