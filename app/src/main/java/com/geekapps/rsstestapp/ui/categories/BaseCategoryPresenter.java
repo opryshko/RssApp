@@ -17,10 +17,6 @@ public abstract class BaseCategoryPresenter extends BaseMvpPresenter {
         super(view);
     }
 
-    public void updateMediaItem(MediaItem media) {
-        categoryTableHelper.updateMedia(media);
-    }
-
     private List<MediaItem> getMediasWithFavouriteMarks(List<MediaItem> medias) {
         MediaItem localMedia;
 

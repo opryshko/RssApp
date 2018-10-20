@@ -1,5 +1,6 @@
 package com.geekapps.rsstestapp.ui.categories.podcasts.impl;
 
+import com.geekapps.rsstestapp.R;
 import com.geekapps.rsstestapp.data.db.categories.PodcastsTableHelperImpl;
 import com.geekapps.rsstestapp.data.network.pojo.category.MediaContent;
 import com.geekapps.rsstestapp.data.network.pojo.category.MediaItem;
@@ -38,6 +39,14 @@ public class PodcastsPresenter extends BaseCategoryPresenter {
         view.initRecyclerView(medias);
         view.hideLoading();
         categoryTableHelper.updateAllMedias(medias);
+    }
+
+    public void updateMediaItem(MediaItem media) {
+        categoryTableHelper.updateMedia(media);
+        if(media.isFavourite())
+            view.showMessage(getStringResource(R.string.add_to_favourites));
+        else
+            view.showMessage(getStringResource(R.string.remove_from_favourites));
     }
 
     private void loadDataFromDb(Throwable throwable) {
