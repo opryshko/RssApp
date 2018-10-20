@@ -1,21 +1,26 @@
 package com.geekapps.rsstestapp.ui.categories.podcasts.impl;
 
+import com.geekapps.rsstestapp.data.db.categories.PodcastsTableHelperImpl;
 import com.geekapps.rsstestapp.data.network.pojo.category.MediaContent;
-import com.geekapps.rsstestapp.mvp.BaseMvpPresenter;
+import com.geekapps.rsstestapp.data.network.pojo.category.MediaItem;
+import com.geekapps.rsstestapp.ui.categories.BaseCategoryPresenter;
 import com.geekapps.rsstestapp.ui.categories.podcasts.PodcastsModel;
 import com.geekapps.rsstestapp.ui.categories.podcasts.PodcastsView;
+
+import java.util.List;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
-public class PodcastsPresenter extends BaseMvpPresenter {
+public class PodcastsPresenter extends BaseCategoryPresenter {
     private PodcastsView view;
     private PodcastsModel model;
-    
+
     public PodcastsPresenter(PodcastsView view) {
         super(view);
         this.view = view;
         this.model = new PodcastsModelImpl();
+        this.categoryTableHelper = new PodcastsTableHelperImpl(view.getContext());
     }
 
     public void getTop25Podcasts() {
@@ -23,12 +28,24 @@ public class PodcastsPresenter extends BaseMvpPresenter {
         model.getTop25Podcasts().subscribeOn(Schedulers.newThread())
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(this::handleGetTop25PodcastsResponse, this::showError);
+                .subscribe(this::handleGetTop25PodcastsResponse, this::loadDataFromDb);
 
     }
 
     private void handleGetTop25PodcastsResponse(MediaContent mediaContent) {
-        view.initRecyclerView(mediaContent.getFeed().getResults());
+        List<MediaItem> medias = getPreparedMediasToDisplay(mediaContent);
+
+        view.initRecyclerView(medias);
         view.hideLoading();
+        categoryTableHelper.updateAllMedias(medias);
+    }
+
+    private void loadDataFromDb(Throwable throwable) {
+        if (categoryTableHelper.getMediasCount() > 0) {
+            view.initRecyclerView(categoryTableHelper.getAllMedias());
+            view.hideLoading();
+            return;
+        }
+        showError(throwable);
     }
 }

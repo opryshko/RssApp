@@ -36,6 +36,6 @@ public class PodcastsFragment extends BaseCategoryFragment implements PodcastsVi
 
     @Override
     public void updateMediaItem(MediaItem media) {
-
+        presenter.updateMediaItem(media);
     }
 }

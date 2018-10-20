@@ -37,7 +37,7 @@ public class MoviesFragment extends BaseCategoryFragment implements MoviesView {
 
     @Override
     public void updateMediaItem(MediaItem media) {
-
+        presenter.updateMediaItem(media);
     }
 }
 
