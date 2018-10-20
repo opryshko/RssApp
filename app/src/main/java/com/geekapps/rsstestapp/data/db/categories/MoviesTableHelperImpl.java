@@ -1,4 +1,4 @@
-package com.geekapps.rsstestapp.data.db.categories.podcasts;
+package com.geekapps.rsstestapp.data.db.categories;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -7,36 +7,37 @@ import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.geekapps.rsstestapp.data.db.categories.BaseCategoryTableHelper;
+import com.geekapps.rsstestapp.data.db.categories.CategoryTableHelper;
 import com.geekapps.rsstestapp.data.network.pojo.category.MediaItem;
 
 import java.util.List;
 
-public class PodcsstsTableHelperImpl extends BaseCategoryTableHelper implements PodcsstsTableHelper {
+public class MoviesTableHelperImpl extends BaseCategoryTableHelper implements CategoryTableHelper {
 
-    public PodcsstsTableHelperImpl(Context context) {
+    public MoviesTableHelperImpl(Context context) {
         super(context);
     }
 
     @Override
-    public void addPodcastItem(MediaItem media) {
+    public void addMediaItem(MediaItem media) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.insert(TABLE_PODCASTS, null, getContentValues(media));
+        db.insert(TABLE_MOVIES, null, getContentValues(media));
         db.close();
     }
 
     @Override
-    public void addPodcastItems(List<MediaItem> medias) {
+    public void addMediaItems(List<MediaItem> medias) {
         SQLiteDatabase db = this.getWritableDatabase();
         for (int i = 0; i < medias.size(); i++)
-            db.insert(TABLE_PODCASTS, null, getContentValues(medias.get(i)));
+            db.insert(TABLE_MOVIES, null, getContentValues(medias.get(i)));
         db.close();
     }
 
     @Override
-    public MediaItem getPodcast(int id) {
+    public MediaItem getMedia(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
 
-        Cursor cursor = db.query(TABLE_PODCASTS, new String[]{FIELD_ID,
+        Cursor cursor = db.query(TABLE_MOVIES, new String[]{FIELD_ID,
                         FIELD_NAME, FIELD_ARTIST, FIELD_LOGO, FIELD_IS_FAVOURITE, FIELD_POSITION}, FIELD_ID + "=?",
                 new String[]{String.valueOf(id)}, null, null, null, null);
 
@@ -48,49 +49,49 @@ public class PodcsstsTableHelperImpl extends BaseCategoryTableHelper implements 
     }
 
     @Override
-    public List<MediaItem> getAllPodcasts() {
-        return getSomeMedias(TABLE_PODCASTS, null);
+    public List<MediaItem> getAllMedias() {
+        return getSomeMedias(TABLE_MOVIES, null);
     }
 
 
     @Override
-    public List<MediaItem> getFavouritePodcasts() {
-        return getSomeMedias(TABLE_PODCASTS, FIELD_IS_FAVOURITE + "=1");
+    public List<MediaItem> getFavouriteMedias() {
+        return getSomeMedias(TABLE_MOVIES, FIELD_IS_FAVOURITE + "=1");
     }
 
     @Override
-    public long getPodcastsCount() {
+    public long getMediasCount() {
         SQLiteDatabase db = this.getReadableDatabase();
-        long count = DatabaseUtils.queryNumEntries(db, TABLE_PODCASTS);
+        long count = DatabaseUtils.queryNumEntries(db, TABLE_MOVIES);
         db.close();
         return count;
     }
 
     @Override
-    public int updatePodcast(MediaItem media) {
+    public int updateMedia(MediaItem media) {
         SQLiteDatabase db = this.getWritableDatabase();
 
-        return db.update(TABLE_PODCASTS, getContentValues(media), FIELD_ID + " = ?",
+        return db.update(TABLE_MOVIES, getContentValues(media), FIELD_ID + " = ?",
                 new String[]{String.valueOf(media.getId())});
     }
 
     @Override
-    public void updateAllPodcasts(List<MediaItem> medias) {
-        deleteAllPodcast();
-        addPodcastItems(medias);
+    public void updateAllMedias(List<MediaItem> medias) {
+        deleteAllMedias();
+        addMediaItems(medias);
     }
 
     @Override
-    public void deletePodcast(MediaItem contact) {
+    public void deleteMedia(MediaItem contact) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TABLE_PODCASTS, FIELD_ID + " = ?", new String[]{String.valueOf(contact.getId())});
+        db.delete(TABLE_MOVIES, FIELD_ID + " = ?", new String[]{String.valueOf(contact.getId())});
         db.close();
     }
 
     @Override
-    public void deleteAllPodcast() {
+    public void deleteAllMedias() {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TABLE_PODCASTS, null, null);
+        db.delete(TABLE_MOVIES, null, null);
         db.close();
     }
 

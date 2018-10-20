@@ -1,7 +1,7 @@
 package com.geekapps.rsstestapp.ui.categories.audiobooks.impl;
 
-import com.geekapps.rsstestapp.data.db.categories.audiobooks.AudiobooksTableHelper;
-import com.geekapps.rsstestapp.data.db.categories.audiobooks.AudiobooksTableHelperImpl;
+import com.geekapps.rsstestapp.data.db.categories.CategoryTableHelper;
+import com.geekapps.rsstestapp.data.db.categories.AudiobooksTableHelperImpl;
 import com.geekapps.rsstestapp.data.network.pojo.category.MediaItem;
 import com.geekapps.rsstestapp.data.network.pojo.category.MediaContent;
 import com.geekapps.rsstestapp.mvp.BaseMvpPresenter;
@@ -16,13 +16,13 @@ import io.reactivex.schedulers.Schedulers;
 public class AudiobooksPresenter extends BaseMvpPresenter {
     private AudiobooksView view;
     private AudiobooksModel model;
-    private AudiobooksTableHelper audiobooksTableHelper;
+    private CategoryTableHelper categoryTableHelper;
 
     public AudiobooksPresenter(AudiobooksView view) {
         super(view);
         this.view = view;
         this.model = new AudiobooksModelImpl();
-        this.audiobooksTableHelper = new AudiobooksTableHelperImpl(view.getContext());
+        this.categoryTableHelper = new AudiobooksTableHelperImpl(view.getContext());
     }
 
     public void getTop25Audiobooks() {
@@ -39,16 +39,16 @@ public class AudiobooksPresenter extends BaseMvpPresenter {
 
         view.initRecyclerView(medias);
         view.hideLoading();
-        audiobooksTableHelper.updateAllAudiobooks(medias);
+        categoryTableHelper.updateAllMedias(medias);
     }
 
     public void updateMediaItem(MediaItem media) {
-        audiobooksTableHelper.updateAudiobook(media);
+        categoryTableHelper.updateMedia(media);
     }
 
     private void loadDataFromDb(Throwable throwable) {
-        if (audiobooksTableHelper.getAudiobooksCount() > 0) {
-            view.initRecyclerView(audiobooksTableHelper.getAllAudiobooks());
+        if (categoryTableHelper.getMediasCount() > 0) {
+            view.initRecyclerView(categoryTableHelper.getAllMedias());
             view.hideLoading();
             return;
         }
@@ -58,9 +58,9 @@ public class AudiobooksPresenter extends BaseMvpPresenter {
     private List<MediaItem> getMediasWithFavouriteMarks(List<MediaItem> medias) {
         MediaItem localMedia;
 
-        if (audiobooksTableHelper.getAudiobooksCount() > 0) {
+        if (categoryTableHelper.getMediasCount() > 0) {
             for (MediaItem media : medias) {
-                localMedia = findMedia(audiobooksTableHelper.getAllAudiobooks(), media.getId());
+                localMedia = findMedia(categoryTableHelper.getAllMedias(), media.getId());
                 if (localMedia != null)
                     media.setFavourite(localMedia.isFavourite());
             }

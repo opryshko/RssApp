@@ -1,4 +1,4 @@
-package com.geekapps.rsstestapp.data.db.categories.audiobooks;
+package com.geekapps.rsstestapp.data.db.categories;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -7,36 +7,37 @@ import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.geekapps.rsstestapp.data.db.categories.BaseCategoryTableHelper;
+import com.geekapps.rsstestapp.data.db.categories.CategoryTableHelper;
 import com.geekapps.rsstestapp.data.network.pojo.category.MediaItem;
 
 import java.util.List;
 
-public class AudiobooksTableHelperImpl extends BaseCategoryTableHelper implements AudiobooksTableHelper {
+public class PodcastsTableHelperImpl extends BaseCategoryTableHelper implements CategoryTableHelper {
 
-    public AudiobooksTableHelperImpl(Context context) {
+    public PodcastsTableHelperImpl(Context context) {
         super(context);
     }
 
     @Override
-    public void addAudiobookItem(MediaItem media) {
+    public void addMediaItem(MediaItem media) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.insert(TABLE_AUDIOBOOKS, null, getContentValues(media));
+        db.insert(TABLE_PODCASTS, null, getContentValues(media));
         db.close();
     }
 
     @Override
-    public void addAudiobooktems(List<MediaItem> medias) {
+    public void addMediaItems(List<MediaItem> medias) {
         SQLiteDatabase db = this.getWritableDatabase();
         for (int i = 0; i < medias.size(); i++)
-            db.insert(TABLE_AUDIOBOOKS, null, getContentValues(medias.get(i)));
+            db.insert(TABLE_PODCASTS, null, getContentValues(medias.get(i)));
         db.close();
     }
 
     @Override
-    public MediaItem getAudiobook(int id) {
+    public MediaItem getMedia(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
 
-        Cursor cursor = db.query(TABLE_AUDIOBOOKS, new String[]{FIELD_ID,
+        Cursor cursor = db.query(TABLE_PODCASTS, new String[]{FIELD_ID,
                         FIELD_NAME, FIELD_ARTIST, FIELD_LOGO, FIELD_IS_FAVOURITE, FIELD_POSITION}, FIELD_ID + "=?",
                 new String[]{String.valueOf(id)}, null, null, null, null);
 
@@ -48,49 +49,49 @@ public class AudiobooksTableHelperImpl extends BaseCategoryTableHelper implement
     }
 
     @Override
-    public List<MediaItem> getAllAudiobooks() {
-        return getSomeMedias(TABLE_AUDIOBOOKS, null);
+    public List<MediaItem> getAllMedias() {
+        return getSomeMedias(TABLE_PODCASTS, null);
     }
 
 
     @Override
-    public List<MediaItem> getFavouriteAudiobooks() {
-        return getSomeMedias(TABLE_AUDIOBOOKS, FIELD_IS_FAVOURITE + "=1");
+    public List<MediaItem> getFavouriteMedias() {
+        return getSomeMedias(TABLE_PODCASTS, FIELD_IS_FAVOURITE + "=1");
     }
 
     @Override
-    public long getAudiobooksCount() {
+    public long getMediasCount() {
         SQLiteDatabase db = this.getReadableDatabase();
-        long count = DatabaseUtils.queryNumEntries(db, TABLE_AUDIOBOOKS);
+        long count = DatabaseUtils.queryNumEntries(db, TABLE_PODCASTS);
         db.close();
         return count;
     }
 
     @Override
-    public int updateAudiobook(MediaItem media) {
+    public int updateMedia(MediaItem media) {
         SQLiteDatabase db = this.getWritableDatabase();
 
-        return db.update(TABLE_AUDIOBOOKS, getContentValues(media), FIELD_ID + " = ?",
+        return db.update(TABLE_PODCASTS, getContentValues(media), FIELD_ID + " = ?",
                 new String[]{String.valueOf(media.getId())});
     }
 
     @Override
-    public void updateAllAudiobooks(List<MediaItem> medias) {
-        deleteAllAudiobook();
-        addAudiobooktems(medias);
+    public void updateAllMedias(List<MediaItem> medias) {
+        deleteAllMedias();
+        addMediaItems(medias);
     }
 
     @Override
-    public void deleteAudiobook(MediaItem contact) {
+    public void deleteMedia(MediaItem contact) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TABLE_AUDIOBOOKS, FIELD_ID + " = ?", new String[]{String.valueOf(contact.getId())});
+        db.delete(TABLE_PODCASTS, FIELD_ID + " = ?", new String[]{String.valueOf(contact.getId())});
         db.close();
     }
 
     @Override
-    public void deleteAllAudiobook() {
+    public void deleteAllMedias() {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TABLE_AUDIOBOOKS, null, null);
+        db.delete(TABLE_PODCASTS, null, null);
         db.close();
     }
 
