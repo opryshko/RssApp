@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 import com.geekapps.rsstestapp.R;
 import com.geekapps.rsstestapp.data.GlideImageLoader;
-import com.geekapps.rsstestapp.data.network.pojo.category.MediaContent;
 import com.geekapps.rsstestapp.data.network.pojo.category.MediaItem;
 
 import java.util.List;
@@ -36,7 +35,7 @@ public class MediaAdapter extends RecyclerView.Adapter<MediaAdapter.MediaViewHol
 
     @Override
     public void onBindViewHolder(@NonNull MediaViewHolder holder, int position) {
-        GlideImageLoader.loadImage(medias.get(position).getArtworkUrl100(), holder.ivLogo, categoryView.getContext());
+        GlideImageLoader.liadCircleImage(medias.get(position).getArtworkUrl100(), holder.ivLogo, categoryView.getContext());
         holder.tvName.setText(medias.get(position).getName());
         holder.tvArtist.setText(medias.get(position).getArtistName());
         holder.setStarSelection(medias.get(position).isFavourite());
