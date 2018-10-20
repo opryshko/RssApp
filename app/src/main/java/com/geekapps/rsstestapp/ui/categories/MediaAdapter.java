@@ -12,15 +12,18 @@ import android.widget.TextView;
 import com.geekapps.rsstestapp.R;
 import com.geekapps.rsstestapp.data.GlideImageLoader;
 import com.geekapps.rsstestapp.data.network.pojo.category.MediaContent;
+import com.geekapps.rsstestapp.data.network.pojo.category.MediaItem;
+
+import java.util.List;
 
 public class MediaAdapter extends RecyclerView.Adapter<MediaAdapter.MediaViewHolder> {
 
-    MediaContent mediaContent;
+    List<MediaItem> medias;
     CategoryView categoryView;
 
 
-    public MediaAdapter(MediaContent mediaContent, CategoryView categoryView) {
-        this.mediaContent = mediaContent;
+    public MediaAdapter(List<MediaItem> medias, CategoryView categoryView) {
+        this.medias = medias;
         this.categoryView = categoryView;
     }
 
@@ -33,32 +36,33 @@ public class MediaAdapter extends RecyclerView.Adapter<MediaAdapter.MediaViewHol
 
     @Override
     public void onBindViewHolder(@NonNull MediaViewHolder holder, int position) {
-        GlideImageLoader.loadImage(mediaContent.getFeed().getResults().get(position).getArtworkUrl100(), holder.ivLogo, categoryView.getContext());
-        holder.tvName.setText(mediaContent.getFeed().getResults().get(position).getName());
-        holder.tvArtist.setText(mediaContent.getFeed().getResults().get(position).getArtistName());
-        holder.ivStar.setImageResource(R.drawable.ic_star_border);
+        GlideImageLoader.loadImage(medias.get(position).getArtworkUrl100(), holder.ivLogo, categoryView.getContext());
+        holder.tvName.setText(medias.get(position).getName());
+        holder.tvArtist.setText(medias.get(position).getArtistName());
+        holder.setStarSelection(medias.get(position).isFavourite());
+
         holder.ivStar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (holder.isSelected)
                     holder.setStarSelection(false);
                 else holder.setStarSelection(true);
-
+                medias.get(position).setFavourite(holder.isSelected);
+                categoryView.updateMediaItem(medias.get(position));
             }
         });
 
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                categoryView.showDetailInformation(mediaContent.getFeed().getResults().get(position).getId());
+                categoryView.showDetailInformation(medias.get(position).getId());
             }
         });
-
     }
 
     @Override
     public int getItemCount() {
-        return mediaContent.getFeed().getResults().size();
+        return medias.size();
     }
 
 
@@ -77,6 +81,7 @@ public class MediaAdapter extends RecyclerView.Adapter<MediaAdapter.MediaViewHol
             tvArtist = (TextView) itemView.findViewById(R.id.artist);
             ivLogo = (ImageView) itemView.findViewById(R.id.logo);
             ivStar = (ImageView) itemView.findViewById(R.id.star);
+
             isSelected = false;
         }
 
@@ -87,8 +92,5 @@ public class MediaAdapter extends RecyclerView.Adapter<MediaAdapter.MediaViewHol
                 ivStar.setImageResource(R.drawable.ic_star_border);
             isSelected = state;
         }
-
-
     }
-
 }

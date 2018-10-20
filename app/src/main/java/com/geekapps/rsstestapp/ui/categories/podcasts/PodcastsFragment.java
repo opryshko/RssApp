@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.geekapps.rsstestapp.R;
+import com.geekapps.rsstestapp.data.network.pojo.category.MediaItem;
 import com.geekapps.rsstestapp.ui.categories.BaseCategoryFragment;
 import com.geekapps.rsstestapp.ui.categories.podcasts.impl.PodcastsPresenter;
 import com.geekapps.rsstestapp.ui.detail_information.DetailInformationFragment;
@@ -31,5 +32,10 @@ public class PodcastsFragment extends BaseCategoryFragment implements PodcastsVi
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         presenter.getTop25Podcasts();
+    }
+
+    @Override
+    public void updateMediaItem(MediaItem media) {
+
     }
 }

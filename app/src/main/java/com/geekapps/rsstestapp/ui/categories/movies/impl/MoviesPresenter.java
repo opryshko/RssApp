@@ -28,7 +28,7 @@ public class MoviesPresenter extends BaseMvpPresenter {
     }
 
     private void handleGetTop25MoviesResponse(MediaContent mediaContent) {
-        view.initRecyclerView(mediaContent);
+        view.initRecyclerView(mediaContent.getFeed().getResults());
         view.hideLoading();
     }
 }

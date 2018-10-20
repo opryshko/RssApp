@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.geekapps.rsstestapp.R;
+import com.geekapps.rsstestapp.data.network.pojo.category.MediaItem;
 import com.geekapps.rsstestapp.ui.categories.BaseCategoryFragment;
 import com.geekapps.rsstestapp.ui.categories.movies.impl.MoviesPresenter;
 import com.geekapps.rsstestapp.ui.detail_information.DetailInformationFragment;
@@ -32,6 +33,11 @@ public class MoviesFragment extends BaseCategoryFragment implements MoviesView {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         presenter.getTop25Movies();
+    }
+
+    @Override
+    public void updateMediaItem(MediaItem media) {
+
     }
 }
 

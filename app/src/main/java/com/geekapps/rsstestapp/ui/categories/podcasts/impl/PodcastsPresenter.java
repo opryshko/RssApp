@@ -28,7 +28,7 @@ public class PodcastsPresenter extends BaseMvpPresenter {
     }
 
     private void handleGetTop25PodcastsResponse(MediaContent mediaContent) {
-        view.initRecyclerView(mediaContent);
+        view.initRecyclerView(mediaContent.getFeed().getResults());
         view.hideLoading();
     }
 }

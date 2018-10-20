@@ -2,6 +2,7 @@
 package com.geekapps.rsstestapp.data.network.pojo.category;
 
 import java.util.List;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -33,7 +34,7 @@ public class Feed {
     private String updated;
     @SerializedName("results")
     @Expose
-    private List<Result> results = null;
+    private List<MediaItem> results = null;
 
     public String getTitle() {
         return title;
@@ -99,11 +100,11 @@ public class Feed {
         this.updated = updated;
     }
 
-    public List<Result> getResults() {
+    public List<MediaItem> getResults() {
         return results;
     }
 
-    public void setResults(List<Result> results) {
+    public void setResults(List<MediaItem> results) {
         this.results = results;
     }
 

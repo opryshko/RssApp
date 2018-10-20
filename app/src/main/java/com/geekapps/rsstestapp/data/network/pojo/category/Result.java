@@ -2,23 +2,17 @@
 package com.geekapps.rsstestapp.data.network.pojo.category;
 
 import java.util.List;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Result {
+public class Result extends MediaItem {
 
-    @SerializedName("artistName")
-    @Expose
-    private String artistName;
-    @SerializedName("id")
-    @Expose
-    private Integer id;
+
     @SerializedName("releaseDate")
     @Expose
     private String releaseDate;
-    @SerializedName("name")
-    @Expose
-    private String name;
+
     @SerializedName("kind")
     @Expose
     private String kind;
@@ -31,9 +25,7 @@ public class Result {
     @SerializedName("artistUrl")
     @Expose
     private String artistUrl;
-    @SerializedName("artworkUrl100")
-    @Expose
-    private String artworkUrl100;
+
     @SerializedName("genres")
     @Expose
     private List<Genre> genres = null;
@@ -41,36 +33,12 @@ public class Result {
     @Expose
     private String url;
 
-    public String getArtistName() {
-        return artistName;
-    }
-
-    public void setArtistName(String artistName) {
-        this.artistName = artistName;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
     public String getReleaseDate() {
         return releaseDate;
     }
 
     public void setReleaseDate(String releaseDate) {
         this.releaseDate = releaseDate;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getKind() {
@@ -103,14 +71,6 @@ public class Result {
 
     public void setArtistUrl(String artistUrl) {
         this.artistUrl = artistUrl;
-    }
-
-    public String getArtworkUrl100() {
-        return artworkUrl100;
-    }
-
-    public void setArtworkUrl100(String artworkUrl100) {
-        this.artworkUrl100 = artworkUrl100;
     }
 
     public List<Genre> getGenres() {
