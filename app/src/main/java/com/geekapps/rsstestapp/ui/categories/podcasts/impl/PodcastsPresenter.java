@@ -44,8 +44,6 @@ public class PodcastsPresenter extends BaseCategoryPresenter {
         if (categoryTableHelper.getMediasCount() > 0) {
             view.initRecyclerView(categoryTableHelper.getAllMedias());
             view.hideLoading();
-            return;
         }
-        showError(throwable);
     }
 }
