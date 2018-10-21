@@ -67,41 +67,49 @@ public class DetailInformationFragment extends BaseMvpFragment implements Detail
 
     @Override
     public void setLogo(String url) {
-        GlideImageLoader.loadRectImage(url, ivLogo, getContext());
+        if (ivLogo != null)
+            GlideImageLoader.loadRectImage(url, ivLogo, getContext());
     }
 
     @Override
     public void setCollectionName(String collectionName) {
-        tvCollectionName.setText(collectionName);
+        if (tvCollectionName != null)
+            tvCollectionName.setText(collectionName);
     }
 
     @Override
     public void setArtistName(String artistName) {
-        tvArtistName.setText(artistName);
+        if (tvArtistName != null)
+            tvArtistName.setText(artistName);
     }
 
     @Override
     public void setPrice(String price) {
-        tvPrice.setText(price);
+        if (tvPrice != null)
+            tvPrice.setText(price);
     }
 
     @Override
     public void setCountry(String country) {
-        tvCountry.setText(country);
+        if (tvCountry != null)
+            tvCountry.setText(country);
     }
 
     @Override
     public void setReleaseDate(Date releaseDate) {
-        tvReleaseDate.setText(DateFormat.getDateTimeInstance().format(releaseDate));
+        if (tvReleaseDate != null)
+            tvReleaseDate.setText(DateFormat.getDateTimeInstance().format(releaseDate));
     }
 
     @Override
     public void setGenre(String genre) {
-        tvGenre.setText(genre);
+        if (tvGenre != null)
+            tvGenre.setText(genre);
     }
 
     @Override
     public void setDescription(Spanned description) {
-        tvDescription.setText(description);
+        if (tvDescription != null)
+            tvDescription.setText(description);
     }
 }
