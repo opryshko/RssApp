@@ -82,9 +82,9 @@ public class PodcastsTableHelperImpl extends BaseCategoryTableHelper implements 
     }
 
     @Override
-    public void deleteMedia(MediaItem contact) {
+    public void deleteMedia(MediaItem media) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TABLE_PODCASTS, FIELD_ID + " = ?", new String[]{String.valueOf(contact.getId())});
+        db.delete(TABLE_PODCASTS, FIELD_ID + " = ?", new String[]{String.valueOf(media.getId())});
         db.close();
     }
 

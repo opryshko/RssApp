@@ -91,15 +91,8 @@ public class DetailInformationFragment extends BaseMvpFragment implements Detail
     }
 
     @Override
-    public void setReleaseDate(String releaseDate) {
-        DateFormat formatter = new SimpleDateFormat(("yyyy-MM-dd'T'HH:mm:ss"));
-        Date date = new Date();
-        try {
-            date = formatter.parse(releaseDate);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        tvReleaseDate.setText(DateFormat.getDateTimeInstance().format(date));
+    public void setReleaseDate(Date releaseDate) {
+        tvReleaseDate.setText(DateFormat.getDateTimeInstance().format(releaseDate));
     }
 
     @Override

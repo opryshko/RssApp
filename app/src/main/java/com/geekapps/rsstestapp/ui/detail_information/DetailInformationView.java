@@ -4,6 +4,8 @@ import android.text.Spanned;
 
 import com.geekapps.rsstestapp.mvp.BaseMvpView;
 
+import java.util.Date;
+
 public interface DetailInformationView extends BaseMvpView {
     void setLogo(String url);
 
@@ -15,7 +17,7 @@ public interface DetailInformationView extends BaseMvpView {
 
     void setCountry(String country);
 
-    void setReleaseDate(String releaseDate);
+    void setReleaseDate(Date releaseDate);
 
     void setGenre(String genre);
 

@@ -12,7 +12,7 @@ public class DetailInformation {
     private Integer resultCount;
     @SerializedName("results")
     @Expose
-    private List<Result> results = null;
+    private List<DetailInformationItem> results = null;
 
     public Integer getResultCount() {
         return resultCount;
@@ -22,11 +22,11 @@ public class DetailInformation {
         this.resultCount = resultCount;
     }
 
-    public List<Result> getResults() {
+    public List<DetailInformationItem> getResults() {
         return results;
     }
 
-    public void setResults(List<Result> results) {
+    public void setResults(List<DetailInformationItem> results) {
         this.results = results;
     }
 
