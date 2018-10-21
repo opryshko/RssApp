@@ -32,7 +32,8 @@ public class DetailInformationPresenter extends BaseMvpPresenter {
         this.detailInformationTableHelper = new DetailInformationTableHelperImpl(view.getContext());
     }
 
-    public void getDetailInformation(Integer id) {
+    public void loadDetailInformation(Integer id) {
+        view.hideReloadDataView();
         view.showLoading();
         currentCollectionId = id;
         model.getDetailInformation(id).subscribeOn(Schedulers.newThread())
@@ -82,6 +83,7 @@ public class DetailInformationPresenter extends BaseMvpPresenter {
             return;
         }
         showError(throwable);
+        view.showReloadDataView();
     }
 
 }

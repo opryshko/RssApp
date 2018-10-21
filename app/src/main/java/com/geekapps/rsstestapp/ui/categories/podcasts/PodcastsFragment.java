@@ -12,9 +12,13 @@ import com.geekapps.rsstestapp.ui.categories.BaseCategoryFragment;
 import com.geekapps.rsstestapp.ui.categories.podcasts.impl.PodcastsPresenter;
 import com.geekapps.rsstestapp.ui.detail_information.DetailInformationFragment;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class PodcastsFragment extends BaseCategoryFragment implements PodcastsView {
+    @BindView(R.id.reload_data_view)
+    View reloadDataView;
 
     PodcastsPresenter presenter;
 
@@ -31,11 +35,27 @@ public class PodcastsFragment extends BaseCategoryFragment implements PodcastsVi
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        presenter.getTop25Podcasts();
+        presenter.loadTop25Podcasts();
     }
 
     @Override
     public void updateMediaItem(MediaItem media) {
         presenter.updateMediaItem(media);
+    }
+
+    @Override
+    public void showReloadDataView() {
+        reloadDataView.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideReloadDataView() {
+        reloadDataView.setVisibility(View.GONE);
+    }
+
+    @Override
+    @OnClick(R.id.tv_try_again)
+    public void onClickTryAgain() {
+        presenter.loadTop25Podcasts();
     }
 }

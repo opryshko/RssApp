@@ -12,4 +12,10 @@ public interface CategoryView extends BaseMvpView {
     void initRecyclerView(List<MediaItem> medias);
 
     void updateMediaItem(MediaItem media);
+
+    void showReloadDataView();
+
+    void hideReloadDataView();
+
+    public void onClickTryAgain();
 }

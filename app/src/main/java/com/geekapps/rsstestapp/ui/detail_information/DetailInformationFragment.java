@@ -15,12 +15,11 @@ import com.geekapps.rsstestapp.mvp.BaseMvpFragment;
 import com.geekapps.rsstestapp.ui.detail_information.impl.DetailInformationPresenter;
 
 import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class DetailInformationFragment extends BaseMvpFragment implements DetailInformationView {
 
@@ -40,6 +39,8 @@ public class DetailInformationFragment extends BaseMvpFragment implements Detail
     TextView tvDescription;
     @BindView(R.id.logo)
     ImageView ivLogo;
+    @BindView(R.id.reload_data_view)
+    View reloadDataView;
 
     DetailInformationPresenter presenter;
 
@@ -55,7 +56,7 @@ public class DetailInformationFragment extends BaseMvpFragment implements Detail
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        presenter.getDetailInformation(getItemIdFromBundle());
+        presenter.loadDetailInformation(getItemIdFromBundle());
     }
 
     private Integer getItemIdFromBundle() {
@@ -111,5 +112,21 @@ public class DetailInformationFragment extends BaseMvpFragment implements Detail
     public void setDescription(Spanned description) {
         if (tvDescription != null)
             tvDescription.setText(description);
+    }
+
+    @Override
+    public void showReloadDataView() {
+        reloadDataView.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideReloadDataView() {
+        reloadDataView.setVisibility(View.GONE);
+    }
+
+    @Override
+    @OnClick(R.id.tv_try_again)
+    public void onClickTryAgain() {
+        presenter.loadDetailInformation(getItemIdFromBundle());
     }
 }

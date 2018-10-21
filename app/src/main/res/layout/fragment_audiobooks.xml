@@ -11,4 +11,6 @@
         android:layout_height="match_parent" />
 
     <include layout="@layout/loading_view" />
+
+    <include layout="@layout/reload_data_view" />
 </FrameLayout>

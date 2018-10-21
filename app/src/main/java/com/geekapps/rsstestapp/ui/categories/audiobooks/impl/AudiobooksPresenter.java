@@ -24,7 +24,8 @@ public class AudiobooksPresenter extends BaseCategoryPresenter {
         this.categoryTableHelper = new AudiobooksTableHelperImpl(view.getContext());
     }
 
-    public void getTop25Audiobooks() {
+    public void loadTop25Audiobooks() {
+        view.hideReloadDataView();
         view.showLoading();
         model.getTop25Audiobooks().subscribeOn(Schedulers.newThread())
                 .subscribeOn(Schedulers.newThread())
@@ -57,5 +58,6 @@ public class AudiobooksPresenter extends BaseCategoryPresenter {
             return;
         }
         showError(throwable);
+        view.showReloadDataView();
     }
 }

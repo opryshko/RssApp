@@ -22,4 +22,10 @@ public interface DetailInformationView extends BaseMvpView {
     void setGenre(String genre);
 
     void setDescription(Spanned description);
+
+    void showReloadDataView();
+
+    void hideReloadDataView();
+
+    public void onClickTryAgain();
 }

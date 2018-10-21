@@ -25,7 +25,8 @@ public class MoviesPresenter extends BaseCategoryPresenter {
         this.categoryTableHelper = new MoviesTableHelperImpl(view.getContext());
     }
 
-    public void getTop25Movies() {
+    public void loadTop25Movies() {
+        view.hideReloadDataView();
         view.showLoading();
         model.getTop25Movies().subscribeOn(Schedulers.newThread())
                 .subscribeOn(Schedulers.newThread())
@@ -55,6 +56,8 @@ public class MoviesPresenter extends BaseCategoryPresenter {
         if (categoryTableHelper.getMediasCount() > 0) {
             view.initRecyclerView(categoryTableHelper.getAllMedias());
             view.hideLoading();
+            return;
         }
+        view.showReloadDataView();
     }
 }

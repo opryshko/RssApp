@@ -24,7 +24,8 @@ public class PodcastsPresenter extends BaseCategoryPresenter {
         this.categoryTableHelper = new PodcastsTableHelperImpl(view.getContext());
     }
 
-    public void getTop25Podcasts() {
+    public void loadTop25Podcasts() {
+        view.hideReloadDataView();
         view.showLoading();
         model.getTop25Podcasts().subscribeOn(Schedulers.newThread())
                 .subscribeOn(Schedulers.newThread())
@@ -54,6 +55,8 @@ public class PodcastsPresenter extends BaseCategoryPresenter {
         if (categoryTableHelper.getMediasCount() > 0) {
             view.initRecyclerView(categoryTableHelper.getAllMedias());
             view.hideLoading();
+            return;
         }
+        view.showReloadDataView();
     }
 }
