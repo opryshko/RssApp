@@ -3,8 +3,6 @@ package com.geekapps.rsstestapp.ui.detail_information.impl;
 import android.os.Build;
 import android.text.Html;
 
-import com.geekapps.rsstestapp.data.db.detail_information.DetailInformationTableHelper;
-import com.geekapps.rsstestapp.data.db.detail_information.DetailInformationTableHelperImpl;
 import com.geekapps.rsstestapp.data.network.pojo.detail_information.DetailInformation;
 import com.geekapps.rsstestapp.data.network.pojo.detail_information.DetailInformationItem;
 import com.geekapps.rsstestapp.mvp.BaseMvpPresenter;
@@ -22,14 +20,12 @@ import io.reactivex.schedulers.Schedulers;
 public class DetailInformationPresenter extends BaseMvpPresenter {
     private DetailInformationView view;
     private DetailInformationModel model;
-    private DetailInformationTableHelper detailInformationTableHelper;
     private Integer currentCollectionId;
 
     public DetailInformationPresenter(DetailInformationView view) {
         super(view);
         this.view = view;
-        this.model = new DetailInformationModelImpl();
-        this.detailInformationTableHelper = new DetailInformationTableHelperImpl(view.getContext());
+        this.model = new DetailInformationModelImpl(view.getContext());
     }
 
     public void loadDetailInformation(Integer id) {
@@ -47,7 +43,7 @@ public class DetailInformationPresenter extends BaseMvpPresenter {
 
         setInformation(detailInformationItem);
         view.hideLoading();
-        detailInformationTableHelper.replaceDetailItem(detailInformationItem);
+        model.replaceDetailItem(detailInformationItem);
     }
 
     private void setInformation(DetailInformationItem detailInformationItem) {
@@ -76,7 +72,7 @@ public class DetailInformationPresenter extends BaseMvpPresenter {
     }
 
     private void loadDataFromDb(Throwable throwable) {
-        DetailInformationItem detailInformationItem = detailInformationTableHelper.getDetail(currentCollectionId);
+        DetailInformationItem detailInformationItem = model.getDetail(currentCollectionId);
         if (detailInformationItem != null) {
             setInformation(detailInformationItem);
             view.hideLoading();

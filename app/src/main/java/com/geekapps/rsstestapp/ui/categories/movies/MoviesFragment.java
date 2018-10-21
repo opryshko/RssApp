@@ -1,6 +1,5 @@
 package com.geekapps.rsstestapp.ui.categories.movies;
 
-
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -30,6 +29,7 @@ public class MoviesFragment extends BaseCategoryFragment implements MoviesView {
         unbinder = ButterKnife.bind(this, rootView);
         presenter = new MoviesPresenter(this);
         detailInformationFragment = new DetailInformationFragment();
+
         return rootView;
     }
 

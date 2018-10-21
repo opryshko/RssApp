@@ -10,7 +10,8 @@ public abstract class BaseMvpPresenter {
     protected void showError(Throwable throwable) {
         mView.hideLoading();
         if (throwable.getMessage().contains("Unable to resolve host")) {
-            mView.showError("Your request cannot be completed because you are not connected to the internet. Verify your network connection and try again.");
+            mView.showError("Your request cannot be completed because you are not" +
+                    "connected to the internet. Verify your network connection and try again.");
         } else {
             mView.showError(throwable.getMessage());
         }
@@ -19,7 +20,8 @@ public abstract class BaseMvpPresenter {
     protected void showError(String error) {
         mView.hideLoading();
         if (error.contains("Unable to resolve host")) {
-            mView.showError("Your request cannot be completed because you are not connected to the internet. Verify your network connection and try again.");
+            mView.showError("Your request cannot be completed because you are not " +
+                    "connected to the internet. Verify your network connection and try again.");
         } else {
             mView.showError(error);
         }

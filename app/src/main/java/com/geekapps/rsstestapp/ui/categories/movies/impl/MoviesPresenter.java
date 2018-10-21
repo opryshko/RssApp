@@ -1,10 +1,8 @@
 package com.geekapps.rsstestapp.ui.categories.movies.impl;
 
 import com.geekapps.rsstestapp.R;
-import com.geekapps.rsstestapp.data.db.categories.MoviesTableHelperImpl;
 import com.geekapps.rsstestapp.data.network.pojo.category.MediaContent;
 import com.geekapps.rsstestapp.data.network.pojo.category.MediaItem;
-import com.geekapps.rsstestapp.mvp.BaseMvpPresenter;
 import com.geekapps.rsstestapp.ui.categories.BaseCategoryPresenter;
 import com.geekapps.rsstestapp.ui.categories.movies.MoviesModel;
 import com.geekapps.rsstestapp.ui.categories.movies.MoviesView;
@@ -21,8 +19,7 @@ public class MoviesPresenter extends BaseCategoryPresenter {
     public MoviesPresenter(MoviesView view) {
         super(view);
         this.view = view;
-        this.model = new MoviesModelImpl();
-        this.categoryTableHelper = new MoviesTableHelperImpl(view.getContext());
+        this.model = new MoviesModelImpl(view.getContext());
     }
 
     public void loadTop25Movies() {
@@ -40,11 +37,11 @@ public class MoviesPresenter extends BaseCategoryPresenter {
 
         view.initRecyclerView(medias);
         view.hideLoading();
-        categoryTableHelper.updateAllMedias(medias);
+        model.updateAllMedias(medias);
     }
 
     public void updateMediaItem(MediaItem media) {
-        categoryTableHelper.updateMedia(media);
+        model.updateMedia(media);
         if (media.isFavourite())
             view.showMessage(getStringResource(R.string.add_to_favourites));
         else
@@ -53,11 +50,31 @@ public class MoviesPresenter extends BaseCategoryPresenter {
     }
 
     private void loadDataFromDb(Throwable throwable) {
-        if (categoryTableHelper.getMediasCount() > 0) {
-            view.initRecyclerView(categoryTableHelper.getAllMedias());
+        if (model.getMediasCount() > 0) {
+            view.initRecyclerView(model.getAllMedias());
             view.hideLoading();
             return;
         }
         view.showReloadDataView();
+    }
+
+    private List<MediaItem> getMediasWithFavouriteMarks(List<MediaItem> medias) {
+        MediaItem localMedia;
+
+        if (model.getMediasCount() > 0) {
+            for (MediaItem media : medias) {
+                localMedia = findMedia(model.getAllMedias(), media.getId());
+                if (localMedia != null)
+                    media.setFavourite(localMedia.isFavourite());
+            }
+        }
+
+        return medias;
+    }
+
+    private List<MediaItem> getPreparedMediasToDisplay(MediaContent mediaContent) {
+        List<MediaItem> medias = initMediaPositions(mediaContent.getFeed().getResults());
+
+        return getMediasWithFavouriteMarks(medias);
     }
 }

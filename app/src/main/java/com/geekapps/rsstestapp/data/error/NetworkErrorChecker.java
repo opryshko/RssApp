@@ -13,7 +13,6 @@ import retrofit2.Response;
 
 public class NetworkErrorChecker extends ErrorChecker<Response> {
 
-
     public NetworkErrorChecker(Response<ResponseBody> response) {
         super(response);
     }
@@ -54,12 +53,14 @@ public class NetworkErrorChecker extends ErrorChecker<Response> {
             if (i != errors.length() - 1)
                 sb.append("; ");
         }
+
         return sb.toString();
     }
 
     private FailedRequestException buildValidationException(String json) throws JSONException {
         ValidationException validationException = new ValidationException();
         validationException.parseFromJson(json);
+
         return validationException;
     }
 }

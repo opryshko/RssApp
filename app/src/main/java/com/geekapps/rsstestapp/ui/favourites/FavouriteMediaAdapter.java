@@ -34,9 +34,11 @@ public class FavouriteMediaAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         switch (viewType) {
             case 0:
-                return new MediaViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.favourite_media_item, parent, false));
+                return new MediaViewHolder(LayoutInflater.from(parent.getContext())
+                        .inflate(R.layout.favourite_media_item, parent, false));
             case 1:
-                return new GroupTitleViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.favourite_group_title_item, parent, false));
+                return new GroupTitleViewHolder(LayoutInflater.from(parent.getContext())
+                        .inflate(R.layout.favourite_group_title_item, parent, false));
         }
 
         return null;
@@ -78,12 +80,8 @@ public class FavouriteMediaAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     }
 
     public void addGroup(String title, List<MediaItem> medias) {
-        if (title != null && !medias.isEmpty()) {
-            favouritesView.hideEmptyListPlaceholder();
-            favouritesListItems.add(new FavouriteGroupTitle(title));
-            favouritesListItems.addAll(medias);
-        } else
-            favouritesView.showEmptyListPlaceholder();
+        favouritesListItems.add(new FavouriteGroupTitle(title));
+        favouritesListItems.addAll(medias);
     }
 
     public void removeAll() {
@@ -99,9 +97,9 @@ public class FavouriteMediaAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         MediaViewHolder(View itemView) {
             super(itemView);
             cardView = (CardView) itemView.findViewById(R.id.cv);
-            tvName = (TextView) itemView.findViewById(R.id.name);
-            tvArtist = (TextView) itemView.findViewById(R.id.artist);
-            ivLogo = (ImageView) itemView.findViewById(R.id.logo);
+            tvName = (TextView) itemView.findViewById(R.id.tv_name);
+            tvArtist = (TextView) itemView.findViewById(R.id.tv_artist);
+            ivLogo = (ImageView) itemView.findViewById(R.id.iv_logo);
         }
     }
 
@@ -110,7 +108,7 @@ public class FavouriteMediaAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
         GroupTitleViewHolder(View itemView) {
             super(itemView);
-            tvGroupTitle = (TextView) itemView.findViewById(R.id.media_group_title);
+            tvGroupTitle = (TextView) itemView.findViewById(R.id.tv_media_group_title);
         }
     }
 }

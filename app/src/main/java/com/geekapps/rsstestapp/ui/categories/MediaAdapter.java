@@ -16,7 +16,6 @@ import com.geekapps.rsstestapp.data.network.pojo.category.MediaItem;
 import java.util.List;
 
 public class MediaAdapter extends RecyclerView.Adapter<MediaAdapter.MediaViewHolder> {
-
     List<MediaItem> medias;
     CategoryView categoryView;
 
@@ -29,6 +28,7 @@ public class MediaAdapter extends RecyclerView.Adapter<MediaAdapter.MediaViewHol
     @Override
     public MediaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.media_item, parent, false);
+
         return new MediaViewHolder(view);
     }
 
@@ -75,10 +75,10 @@ public class MediaAdapter extends RecyclerView.Adapter<MediaAdapter.MediaViewHol
         MediaViewHolder(View itemView) {
             super(itemView);
             cardView = (CardView) itemView.findViewById(R.id.cv);
-            tvName = (TextView) itemView.findViewById(R.id.name);
-            tvArtist = (TextView) itemView.findViewById(R.id.artist);
-            ivLogo = (ImageView) itemView.findViewById(R.id.logo);
-            ivStar = (ImageView) itemView.findViewById(R.id.star);
+            tvName = (TextView) itemView.findViewById(R.id.tv_name);
+            tvArtist = (TextView) itemView.findViewById(R.id.tv_artist);
+            ivLogo = (ImageView) itemView.findViewById(R.id.iv_logo);
+            ivStar = (ImageView) itemView.findViewById(R.id.iv_star);
 
             isSelected = false;
         }

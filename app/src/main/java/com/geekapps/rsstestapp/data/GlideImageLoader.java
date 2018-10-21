@@ -13,14 +13,19 @@ import com.geekapps.rsstestapp.R;
 public class GlideImageLoader {
 
     public static ViewTarget<ImageView, Drawable> liadCircleImage(String url, ImageView imageView, Context context) {
+
         return Glide.with(context)
-                .setDefaultRequestOptions(new RequestOptions().diskCacheStrategy(DiskCacheStrategy.ALL).circleCrop().placeholder(R.drawable.ic_placeholder_image).error(R.drawable.ic_broken_image))
+                .setDefaultRequestOptions(new RequestOptions().diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .circleCrop().placeholder(R.drawable.ic_placeholder_image).error(R.drawable.ic_broken_image))
                 .load(url == null ? "" : url)
                 .into(imageView);
     }
+
     public static ViewTarget<ImageView, Drawable> loadRectImage(String url, ImageView imageView, Context context) {
+
         return Glide.with(context)
-                .setDefaultRequestOptions(new RequestOptions().diskCacheStrategy(DiskCacheStrategy.ALL).centerCrop().placeholder(R.drawable.ic_placeholder_image).error(R.drawable.ic_broken_image))
+                .setDefaultRequestOptions(new RequestOptions().diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .centerCrop().placeholder(R.drawable.ic_placeholder_image).error(R.drawable.ic_broken_image))
                 .load(url == null ? "" : url)
                 .into(imageView);
     }

@@ -29,6 +29,7 @@ public class PodcastsFragment extends BaseCategoryFragment implements PodcastsVi
         unbinder = ButterKnife.bind(this, rootView);
         presenter = new PodcastsPresenter(this);
         detailInformationFragment = new DetailInformationFragment();
+
         return rootView;
     }
 

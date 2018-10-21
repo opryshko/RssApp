@@ -1,6 +1,5 @@
 package com.geekapps.rsstestapp.ui.favourites;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,14 +8,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.geekapps.rsstestapp.R;
 import com.geekapps.rsstestapp.data.network.pojo.category.MediaItem;
 import com.geekapps.rsstestapp.mvp.BaseMvpFragment;
-import com.geekapps.rsstestapp.ui.MainActivity;
 import com.geekapps.rsstestapp.ui.categories.BaseCategoryPresenter;
-import com.geekapps.rsstestapp.ui.categories.MediaAdapter;
 import com.geekapps.rsstestapp.ui.detail_information.DetailInformationFragment;
 import com.geekapps.rsstestapp.ui.favourites.impl.FavouritesPresenter;
 
@@ -42,9 +38,10 @@ public class FavouritesFragment extends BaseMvpFragment implements FavouritesVie
         rootView = inflater.inflate(R.layout.fragment_favourites, container, false);
         unbinder = ButterKnife.bind(this, rootView);
         presenter = new FavouritesPresenter(this);
-        detailInformationFragment = new DetailInformationFragment();
-        initRecyclerView();
         BaseCategoryPresenter.callBack = (BaseCategoryPresenter.CallBack) this;
+        initRecyclerView();
+        detailInformationFragment = new DetailInformationFragment();
+
         return rootView;
     }
 
@@ -64,6 +61,7 @@ public class FavouritesFragment extends BaseMvpFragment implements FavouritesVie
     @Override
     public void addFavouritesGroup(String title, List<MediaItem> medias) {
         favouriteMediaAdapter.addGroup(title, medias);
+        favouriteMediaAdapter.notifyDataSetChanged();
     }
 
     @Override

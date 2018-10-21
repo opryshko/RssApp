@@ -1,20 +1,13 @@
 package com.geekapps.rsstestapp.ui.favourites.impl;
 
 import com.geekapps.rsstestapp.R;
-import com.geekapps.rsstestapp.data.db.categories.AudiobooksTableHelperImpl;
-import com.geekapps.rsstestapp.data.db.categories.CategoryTableHelper;
-import com.geekapps.rsstestapp.data.network.pojo.category.MediaContent;
 import com.geekapps.rsstestapp.data.network.pojo.category.MediaItem;
+import com.geekapps.rsstestapp.data.network.pojo.favourites.FavouritesListItem;
 import com.geekapps.rsstestapp.mvp.BaseMvpPresenter;
-import com.geekapps.rsstestapp.mvp.BaseMvpView;
-import com.geekapps.rsstestapp.ui.categories.BaseCategoryPresenter;
 import com.geekapps.rsstestapp.ui.favourites.FavouritesModel;
 import com.geekapps.rsstestapp.ui.favourites.FavouritesView;
 
 import java.util.List;
-
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.schedulers.Schedulers;
 
 public class FavouritesPresenter extends BaseMvpPresenter {
     private FavouritesView view;
@@ -36,9 +29,20 @@ public class FavouritesPresenter extends BaseMvpPresenter {
     }
 
     private void addFavouriteGroups() {
-        view.addFavouritesGroup(getStringResource(R.string.audiobooks), model.getFavouriteAudiobooks());
-        view.addFavouritesGroup(getStringResource(R.string.movies), model.getFavouritesMovies());
-        view.addFavouritesGroup(getStringResource(R.string.podcasts), model.getFavouritesPodcasts());
+        List<MediaItem> audiobooks = model.getFavouriteAudiobooks();
+        List<MediaItem> movies = model.getFavouritesMovies();
+        List<MediaItem> podcasts = model.getFavouritesPodcasts();
+
+        if (!audiobooks.isEmpty())
+            view.addFavouritesGroup(getStringResource(R.string.audiobooks), audiobooks);
+        if (!movies.isEmpty())
+            view.addFavouritesGroup(getStringResource(R.string.movies), movies);
+        if (!podcasts.isEmpty())
+            view.addFavouritesGroup(getStringResource(R.string.podcasts), podcasts);
+
+        if (audiobooks.isEmpty() && movies.isEmpty() && podcasts.isEmpty())
+            view.showEmptyListPlaceholder();
+        else view.hideEmptyListPlaceholder();
     }
 
 }

@@ -23,7 +23,6 @@ public class MediaItem implements Comparable<MediaItem>, FavouritesListItem {
     private Integer position;
 
     public MediaItem() {
-
     }
 
     public MediaItem(Integer id, String name, String artistName, String logo, Boolean isFavourite, Integer position) {

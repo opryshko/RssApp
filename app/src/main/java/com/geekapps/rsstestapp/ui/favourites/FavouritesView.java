@@ -1,7 +1,6 @@
 package com.geekapps.rsstestapp.ui.favourites;
 
 import com.geekapps.rsstestapp.data.network.pojo.category.MediaItem;
-import com.geekapps.rsstestapp.data.network.pojo.favourites.FavouritesListItem;
 import com.geekapps.rsstestapp.mvp.BaseMvpView;
 
 import java.util.List;

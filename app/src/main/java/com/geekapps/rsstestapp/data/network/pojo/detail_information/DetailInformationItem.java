@@ -48,7 +48,6 @@ public class DetailInformationItem {
     private String wrapperType = "audiobook";
 
     public DetailInformationItem() {
-
     }
 
     public DetailInformationItem(Integer id, String name, String artist, String logo, Double price, String currency,

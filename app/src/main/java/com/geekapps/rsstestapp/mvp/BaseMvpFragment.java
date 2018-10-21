@@ -26,14 +26,12 @@ public abstract class BaseMvpFragment extends Fragment implements BaseMvpView {
     private ActionBar actionBar;
     protected CallBack baseCallBack;
 
-
     protected void initLoadingView() {
         setLoadingView(rootView.findViewById(R.id.loading_view));
     }
 
     protected void initToolbar() {
         setHasOptionsMenu(true);
-        //toolbar = rootView.findViewById(R.id.toolbar);
         toolbar.setNavigationOnClickListener(view -> getFragmentManager().popBackStack());
     }
 
@@ -44,8 +42,6 @@ public abstract class BaseMvpFragment extends Fragment implements BaseMvpView {
     protected void inflateMenu(int resId) {
         toolbar.inflateMenu(resId);
     }
-
-
 
     @Override
     public void onAttach(Context context) {
@@ -117,6 +113,7 @@ public abstract class BaseMvpFragment extends Fragment implements BaseMvpView {
 
     protected View getLoadingView() {
         initLoadingView();
+
         return mLoadingView;
     }
 

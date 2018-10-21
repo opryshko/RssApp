@@ -4,7 +4,7 @@ import com.geekapps.rsstestapp.data.network.pojo.category.MediaItem;
 
 import java.util.List;
 
-public interface CategoryTableHelper {
+public interface CategoryTableAdapter {
     void addMediaItem(MediaItem media);
 
     void addMediaItems(List<MediaItem> medias);

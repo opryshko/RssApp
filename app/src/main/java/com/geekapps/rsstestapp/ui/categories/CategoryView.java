@@ -17,5 +17,5 @@ public interface CategoryView extends BaseMvpView {
 
     void hideReloadDataView();
 
-    public void onClickTryAgain();
+    void onClickTryAgain();
 }

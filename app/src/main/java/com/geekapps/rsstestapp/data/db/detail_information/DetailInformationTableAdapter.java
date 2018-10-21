@@ -4,7 +4,7 @@ import com.geekapps.rsstestapp.data.network.pojo.detail_information.DetailInform
 
 import java.util.List;
 
-public interface DetailInformationTableHelper {
+public interface DetailInformationTableAdapter {
     void addDetailItem(DetailInformationItem detail);
 
     void addDetailItems(List<DetailInformationItem> details);

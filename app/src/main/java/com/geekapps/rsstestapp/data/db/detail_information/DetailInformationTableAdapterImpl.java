@@ -6,48 +6,49 @@ import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.geekapps.rsstestapp.data.db.BaseDbHelper;
+import com.geekapps.rsstestapp.data.db.DbHelper;
 import com.geekapps.rsstestapp.data.network.pojo.detail_information.DetailInformationItem;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class DetailInformationTableHelperImpl extends BaseDbHelper implements DetailInformationTableHelper {
+public class DetailInformationTableAdapterImpl implements DetailInformationTableAdapter {
+    protected DbHelper dbHelper;
 
-    public DetailInformationTableHelperImpl(Context context) {
-        super(context);
+    public DetailInformationTableAdapterImpl(Context context) {
+        dbHelper = new DbHelper(context);
     }
 
     @Override
     public void addDetailItem(DetailInformationItem detail) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        db.insert(TABLE_MEDIA_DETAIL_INFORMATION, null, getContentValues(detail));
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        db.insert(dbHelper.TABLE_MEDIA_DETAIL_INFORMATION, null, getContentValues(detail));
         db.close();
     }
 
     @Override
     public void addDetailItems(List<DetailInformationItem> details) {
-        SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
         for (int i = 0; i < details.size(); i++)
-            db.insert(TABLE_MEDIA_DETAIL_INFORMATION, null, getContentValues(details.get(i)));
+            db.insert(dbHelper.TABLE_MEDIA_DETAIL_INFORMATION, null, getContentValues(details.get(i)));
         db.close();
     }
 
     @Override
     public void replaceDetailItem(DetailInformationItem detail) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        db.replace(TABLE_MEDIA_DETAIL_INFORMATION, null, getContentValues(detail));
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        db.replace(dbHelper.TABLE_MEDIA_DETAIL_INFORMATION, null, getContentValues(detail));
         db.close();
     }
 
     @Override
     public DetailInformationItem getDetail(int id) {
-        SQLiteDatabase db = this.getReadableDatabase();
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
 
-        Cursor cursor = db.query(TABLE_MEDIA_DETAIL_INFORMATION, new String[]{FIELD_ID,
-                        FIELD_NAME, FIELD_ARTIST, FIELD_LOGO, FIELD_PRICE, FIELD_CURRENCY,
-                        FIELD_COUNTRY, FIELD_RELEASE_DATE, FIELD_GENRE, FIELD_DESCRIPTION},
-                FIELD_ID + "=?",
+        Cursor cursor = db.query(dbHelper.TABLE_MEDIA_DETAIL_INFORMATION, new String[]{dbHelper.FIELD_ID,
+                        dbHelper.FIELD_NAME, dbHelper.FIELD_ARTIST, dbHelper.FIELD_LOGO, dbHelper.FIELD_PRICE, dbHelper.FIELD_CURRENCY,
+                        dbHelper.FIELD_COUNTRY, dbHelper.FIELD_RELEASE_DATE, dbHelper.FIELD_GENRE, dbHelper.FIELD_DESCRIPTION},
+                dbHelper.FIELD_ID + "=?",
                 new String[]{String.valueOf(id)}, null, null, null, null);
 
         if (cursor != null && cursor.moveToFirst()) {
@@ -63,8 +64,8 @@ public class DetailInformationTableHelperImpl extends BaseDbHelper implements De
     public List<DetailInformationItem> getAllDetails() {
         List<DetailInformationItem> details = new ArrayList<DetailInformationItem>();
         String selectQuery;
-        selectQuery = "SELECT  * FROM " + TABLE_MEDIA_DETAIL_INFORMATION;
-        SQLiteDatabase db = this.getWritableDatabase();
+        selectQuery = "SELECT  * FROM " + dbHelper.TABLE_MEDIA_DETAIL_INFORMATION;
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
 
         if (cursor.moveToFirst()) {
@@ -83,8 +84,8 @@ public class DetailInformationTableHelperImpl extends BaseDbHelper implements De
 
     @Override
     public long getDetailsCount() {
-        SQLiteDatabase db = this.getReadableDatabase();
-        long count = DatabaseUtils.queryNumEntries(db, TABLE_MEDIA_DETAIL_INFORMATION);
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        long count = DatabaseUtils.queryNumEntries(db, dbHelper.TABLE_MEDIA_DETAIL_INFORMATION);
         db.close();
 
         return count;
@@ -92,9 +93,9 @@ public class DetailInformationTableHelperImpl extends BaseDbHelper implements De
 
     @Override
     public int updateDetail(DetailInformationItem detail) {
-        SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
 
-        return db.update(TABLE_MEDIA_DETAIL_INFORMATION, getContentValues(detail), FIELD_ID + " = ?",
+        return db.update(dbHelper.TABLE_MEDIA_DETAIL_INFORMATION, getContentValues(detail), dbHelper.FIELD_ID + " = ?",
                 new String[]{String.valueOf(detail.getId())});
     }
 
@@ -106,31 +107,31 @@ public class DetailInformationTableHelperImpl extends BaseDbHelper implements De
 
     @Override
     public void deleteDetail(DetailInformationItem detail) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TABLE_MEDIA_DETAIL_INFORMATION, FIELD_ID + " = ?",
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        db.delete(dbHelper.TABLE_MEDIA_DETAIL_INFORMATION, dbHelper.FIELD_ID + " = ?",
                 new String[]{String.valueOf(detail.getId())});
         db.close();
     }
 
     @Override
     public void deleteAllDetails() {
-        SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TABLE_MEDIA_DETAIL_INFORMATION, null, null);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        db.delete(dbHelper.TABLE_MEDIA_DETAIL_INFORMATION, null, null);
         db.close();
     }
 
     protected ContentValues getContentValues(DetailInformationItem detail) {
         ContentValues values = new ContentValues();
-        values.put(FIELD_ID, detail.getId());
-        values.put(FIELD_NAME, detail.getCollectionName());
-        values.put(FIELD_ARTIST, detail.getArtistName());
-        values.put(FIELD_LOGO, detail.getArtworkUrl100());
-        values.put(FIELD_PRICE, detail.getCollectionPrice());
-        values.put(FIELD_CURRENCY, detail.getCurrency());
-        values.put(FIELD_COUNTRY, detail.getCountry());
-        values.put(FIELD_RELEASE_DATE, detail.getReleaseDate());
-        values.put(FIELD_GENRE, detail.getPrimaryGenreName());
-        values.put(FIELD_DESCRIPTION, detail.getDescription());
+        values.put(dbHelper.FIELD_ID, detail.getId());
+        values.put(dbHelper.FIELD_NAME, detail.getCollectionName());
+        values.put(dbHelper.FIELD_ARTIST, detail.getArtistName());
+        values.put(dbHelper.FIELD_LOGO, detail.getArtworkUrl100());
+        values.put(dbHelper.FIELD_PRICE, detail.getCollectionPrice());
+        values.put(dbHelper.FIELD_CURRENCY, detail.getCurrency());
+        values.put(dbHelper.FIELD_COUNTRY, detail.getCountry());
+        values.put(dbHelper.FIELD_RELEASE_DATE, detail.getReleaseDate());
+        values.put(dbHelper.FIELD_GENRE, detail.getPrimaryGenreName());
+        values.put(dbHelper.FIELD_DESCRIPTION, detail.getDescription());
 
         return values;
     }

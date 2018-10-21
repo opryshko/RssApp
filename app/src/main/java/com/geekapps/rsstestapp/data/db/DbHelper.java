@@ -4,29 +4,29 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-public abstract class BaseDbHelper extends SQLiteOpenHelper {
-    protected static final int DATABASE_VERSION = 1;
-    protected static final String DATABASE_NAME = "rss_content";
+public class DbHelper extends SQLiteOpenHelper {
+    private static final int DATABASE_VERSION = 1;
+    private static final String DATABASE_NAME = "rss_content";
 
-    protected static final String TABLE_AUDIOBOOKS = "audiobooks";
-    protected static final String TABLE_MOVIES = "movies";
-    protected static final String TABLE_PODCASTS = "podcasts";
-    protected static final String TABLE_MEDIA_DETAIL_INFORMATION = "media_detail_information";
+    public static final String TABLE_AUDIOBOOKS = "audiobooks";
+    public static final String TABLE_MOVIES = "movies";
+    public static final String TABLE_PODCASTS = "podcasts";
+    public static final String TABLE_MEDIA_DETAIL_INFORMATION = "media_detail_information";
 
-    protected static final String FIELD_ID = "id";
-    protected static final String FIELD_ARTIST = "artist";
-    protected static final String FIELD_NAME = "name";
-    protected static final String FIELD_LOGO = "logo";
-    protected static final String FIELD_IS_FAVOURITE = "is_favourite";
-    protected static final String FIELD_POSITION = "position";
-    protected static final String FIELD_PRICE = "price";
-    protected static final String FIELD_COUNTRY = "country";
-    protected static final String FIELD_CURRENCY = "currency";
-    protected static final String FIELD_RELEASE_DATE = "release_date";
-    protected static final String FIELD_GENRE = "genre";
-    protected static final String FIELD_DESCRIPTION = "description";
+    public static final String FIELD_ID = "id";
+    public static final String FIELD_ARTIST = "artist";
+    public static final String FIELD_NAME = "name";
+    public static final String FIELD_LOGO = "logo";
+    public static final String FIELD_IS_FAVOURITE = "is_favourite";
+    public static final String FIELD_POSITION = "position";
+    public static final String FIELD_PRICE = "price";
+    public static final String FIELD_COUNTRY = "country";
+    public static final String FIELD_CURRENCY = "currency";
+    public static final String FIELD_RELEASE_DATE = "release_date";
+    public static final String FIELD_GENRE = "genre";
+    public static final String FIELD_DESCRIPTION = "description";
 
-    public BaseDbHelper(Context context) {
+    public DbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 

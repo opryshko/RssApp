@@ -1,7 +1,5 @@
 package com.geekapps.rsstestapp.data.network;
 
-import com.geekapps.rsstestapp.data.network.pojo.detail_information.DetailInformation;
-
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 

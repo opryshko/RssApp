@@ -23,21 +23,21 @@ import butterknife.OnClick;
 
 public class DetailInformationFragment extends BaseMvpFragment implements DetailInformationView {
 
-    @BindView(R.id.artist)
+    @BindView(R.id.tv_artist)
     TextView tvArtistName;
-    @BindView(R.id.name)
+    @BindView(R.id.tv_name)
     TextView tvCollectionName;
-    @BindView(R.id.price)
+    @BindView(R.id.tv_price)
     TextView tvPrice;
-    @BindView(R.id.country)
+    @BindView(R.id.tv_country)
     TextView tvCountry;
-    @BindView(R.id.date)
+    @BindView(R.id.tv_date)
     TextView tvReleaseDate;
-    @BindView(R.id.genre)
+    @BindView(R.id.tv_genre)
     TextView tvGenre;
-    @BindView(R.id.description)
+    @BindView(R.id.tv_description)
     TextView tvDescription;
-    @BindView(R.id.logo)
+    @BindView(R.id.iv_logo)
     ImageView ivLogo;
     @BindView(R.id.reload_data_view)
     View reloadDataView;
