@@ -2,10 +2,11 @@ package com.geekapps.rsstestapp.data.network.pojo.category;
 
 import android.support.annotation.NonNull;
 
+import com.geekapps.rsstestapp.data.network.pojo.favourites.FavouritesListItem;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class MediaItem implements Comparable<MediaItem> {
+public class MediaItem implements Comparable<MediaItem>, FavouritesListItem {
     @SerializedName("artistName")
     @Expose
     private String artistName;
@@ -31,7 +32,7 @@ public class MediaItem implements Comparable<MediaItem> {
         this.artistName = artistName;
         this.artworkUrl100 = logo;
         this.isFavourite = isFavourite;
-        this.position=position;
+        this.position = position;
     }
 
     public String getArtistName() {
@@ -85,5 +86,10 @@ public class MediaItem implements Comparable<MediaItem> {
     @Override
     public int compareTo(@NonNull MediaItem mediaItem) {
         return this.getPosition().compareTo(mediaItem.getPosition());
+    }
+
+    @Override
+    public Integer getItemType() {
+        return FavouritesListItem.FAVOURITE_MEDIA_ITEM_TYPE;
     }
 }

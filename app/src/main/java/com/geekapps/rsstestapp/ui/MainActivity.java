@@ -17,6 +17,7 @@ import com.geekapps.rsstestapp.ui.categories.ViewPagerAdapter;
 import com.geekapps.rsstestapp.ui.categories.audiobooks.AudiobooksFragment;
 import com.geekapps.rsstestapp.ui.categories.movies.MoviesFragment;
 import com.geekapps.rsstestapp.ui.categories.podcasts.PodcastsFragment;
+import com.geekapps.rsstestapp.ui.favourites.FavouritesFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -49,6 +50,9 @@ public class MainActivity extends BaseMvpActivity {
                     case R.id.podcasts:
                         viewPager.setCurrentItem(2);
                         break;
+                    case R.id.favourites:
+                        viewPager.setCurrentItem(3);
+                        break;
                 }
                 clearFragmentsBackstack();
                 return true;
@@ -69,6 +73,7 @@ public class MainActivity extends BaseMvpActivity {
         adapter.addFragment(new AudiobooksFragment());
         adapter.addFragment(new MoviesFragment());
         adapter.addFragment(new PodcastsFragment());
+        adapter.addFragment(new FavouritesFragment());
 
         viewPager.setOffscreenPageLimit(4);
         viewPager.setAdapter(adapter);

@@ -48,6 +48,7 @@ public class MoviesPresenter extends BaseCategoryPresenter {
             view.showMessage(getStringResource(R.string.add_to_favourites));
         else
             view.showMessage(getStringResource(R.string.remove_from_favourites));
+        callBack.onUpdateFavourites();
     }
 
     private void loadDataFromDb(Throwable throwable) {

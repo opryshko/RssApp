@@ -17,8 +17,28 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
 public class FavouritesPresenter extends BaseMvpPresenter {
+    private FavouritesView view;
+    private FavouritesModel model;
 
-    public FavouritesPresenter(BaseMvpView view) {
+    public FavouritesPresenter(FavouritesView view) {
         super(view);
+        this.view = view;
+        this.model = new FavouritesModelImpl(view.getContext());
     }
+
+    public void loadFavouriteGroups() {
+        addFavouriteGroups();
+    }
+
+    public void updateFavouriteGroups() {
+        view.clearFavoritesList();
+        addFavouriteGroups();
+    }
+
+    private void addFavouriteGroups() {
+        view.addFavouritesGroup(getStringResource(R.string.audiobooks), model.getFavouriteAudiobooks());
+        view.addFavouritesGroup(getStringResource(R.string.movies), model.getFavouritesMovies());
+        view.addFavouritesGroup(getStringResource(R.string.podcasts), model.getFavouritesPodcasts());
+    }
+
 }

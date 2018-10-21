@@ -20,7 +20,6 @@ public class MediaAdapter extends RecyclerView.Adapter<MediaAdapter.MediaViewHol
     List<MediaItem> medias;
     CategoryView categoryView;
 
-
     public MediaAdapter(List<MediaItem> medias, CategoryView categoryView) {
         this.medias = medias;
         this.categoryView = categoryView;

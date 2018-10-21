@@ -12,6 +12,7 @@ import java.util.List;
 
 public abstract class BaseCategoryPresenter extends BaseMvpPresenter {
     protected CategoryTableHelper categoryTableHelper;
+    public static CallBack callBack;
 
     public BaseCategoryPresenter(BaseMvpView view) {
         super(view);
@@ -49,5 +50,9 @@ public abstract class BaseCategoryPresenter extends BaseMvpPresenter {
         List<MediaItem> medias = initMediaPositions(mediaContent.getFeed().getResults());
 
         return getMediasWithFavouriteMarks(medias);
+    }
+
+    public interface CallBack {
+        void onUpdateFavourites();
     }
 }

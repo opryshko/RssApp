@@ -3,7 +3,7 @@
 <item
     android:id="@+id/audiobooks"
     android:icon="@drawable/ic_library_music"
-    android:title="@string/mediaContent"/>
+    android:title="@string/audiobooks"/>
 
     <item
         android:id="@+id/movies"

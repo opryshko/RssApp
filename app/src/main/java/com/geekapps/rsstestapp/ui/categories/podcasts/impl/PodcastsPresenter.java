@@ -43,10 +43,11 @@ public class PodcastsPresenter extends BaseCategoryPresenter {
 
     public void updateMediaItem(MediaItem media) {
         categoryTableHelper.updateMedia(media);
-        if(media.isFavourite())
+        if (media.isFavourite())
             view.showMessage(getStringResource(R.string.add_to_favourites));
         else
             view.showMessage(getStringResource(R.string.remove_from_favourites));
+        callBack.onUpdateFavourites();
     }
 
     private void loadDataFromDb(Throwable throwable) {
