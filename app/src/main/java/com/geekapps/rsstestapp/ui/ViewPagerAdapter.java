@@ -1,4 +1,4 @@
-package com.geekapps.rsstestapp.ui.categories;
+package com.geekapps.rsstestapp.ui;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

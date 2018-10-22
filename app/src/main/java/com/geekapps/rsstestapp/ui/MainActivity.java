@@ -7,13 +7,10 @@ import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.RelativeLayout;
 
 import com.geekapps.rsstestapp.R;
 import com.geekapps.rsstestapp.mvp.BaseMvpActivity;
-import com.geekapps.rsstestapp.ui.categories.CustomViewPager;
-import com.geekapps.rsstestapp.ui.categories.ViewPagerAdapter;
 import com.geekapps.rsstestapp.ui.categories.audiobooks.AudiobooksFragment;
 import com.geekapps.rsstestapp.ui.categories.movies.MoviesFragment;
 import com.geekapps.rsstestapp.ui.categories.podcasts.PodcastsFragment;
