@@ -30,7 +30,6 @@ public class Result extends DetailInformationItem {
     @SerializedName("copyright")
     @Expose
     private String copyright;
-
     @SerializedName("previewUrl")
     @Expose
     private String previewUrl;

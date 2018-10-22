@@ -86,7 +86,8 @@ public class PodcastsTableAdapterImpl extends BaseCategoryTableAdapter {
     @Override
     public void deleteMedia(MediaItem media) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        db.delete(dbHelper.TABLE_PODCASTS, dbHelper.FIELD_ID + " = ?", new String[]{String.valueOf(media.getId())});
+        db.delete(dbHelper.TABLE_PODCASTS, dbHelper.FIELD_ID + " = ?",
+                new String[]{String.valueOf(media.getId())});
         db.close();
     }
 

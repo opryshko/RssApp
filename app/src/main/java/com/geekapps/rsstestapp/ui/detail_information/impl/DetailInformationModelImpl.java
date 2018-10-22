@@ -21,6 +21,7 @@ import okhttp3.ResponseBody;
 import retrofit2.Response;
 
 public class DetailInformationModelImpl extends BaseMvpModel implements DetailInformationModel {
+
     private RssTestAppService api = RssTestAppClient.getClientForDetailInformation().create(RssTestAppService.class);
     private DetailInformationTableAdapter detailInformationTableAdapter;
 

@@ -13,6 +13,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RssTestAppClient {
+
     private static final String CATEGORIES_ENDPOINT = "https://rss.itunes.apple.com/api/v1/us/";
     private static final String DETAIL_INFORMATION_ENDPOINT = "https://itunes.apple.com/";
     private static Retrofit retrofitForCategory;
@@ -28,6 +29,7 @@ public class RssTestAppClient {
 
         client.addInterceptor(interceptor);
         client.addInterceptor(new AcceptHeaderInterceptor());
+
         return client;
     }
 
@@ -52,6 +54,7 @@ public class RssTestAppClient {
                     .client(getBuilder().build())
                     .build();
         }
+
         return retrofitForDetailInformation;
     }
 

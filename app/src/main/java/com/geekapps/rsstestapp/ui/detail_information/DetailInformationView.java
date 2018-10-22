@@ -7,6 +7,7 @@ import com.geekapps.rsstestapp.mvp.BaseMvpView;
 import java.util.Date;
 
 public interface DetailInformationView extends BaseMvpView {
+
     void setLogo(String url);
 
     void setCollectionName(String collectionName);
@@ -27,5 +28,5 @@ public interface DetailInformationView extends BaseMvpView {
 
     void hideReloadDataView();
 
-    public void onClickTryAgain();
+    void onClickTryAgain();
 }

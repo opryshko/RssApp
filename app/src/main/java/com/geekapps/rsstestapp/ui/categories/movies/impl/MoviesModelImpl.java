@@ -22,6 +22,7 @@ import okhttp3.ResponseBody;
 import retrofit2.Response;
 
 public class MoviesModelImpl extends BaseMvpModel implements MoviesModel {
+
     private RssTestAppService api = RssTestAppClient.getClientForCategory().create(RssTestAppService.class);
     private CategoryTableAdapter categoryTableAdapter;
 

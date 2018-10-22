@@ -13,6 +13,7 @@ import com.geekapps.rsstestapp.ui.favourites.FavouritesModel;
 import java.util.List;
 
 public class FavouritesModelImpl extends BaseMvpModel implements FavouritesModel {
+
     private CategoryTableAdapter audiobooksTableHelper;
     private CategoryTableAdapter moviesTableHelper;
     private CategoryTableAdapter podcastsTableHelper;

@@ -8,11 +8,9 @@ import com.google.gson.annotations.SerializedName;
 
 public class Result extends MediaItem {
 
-
     @SerializedName("releaseDate")
     @Expose
     private String releaseDate;
-
     @SerializedName("kind")
     @Expose
     private String kind;
@@ -25,7 +23,6 @@ public class Result extends MediaItem {
     @SerializedName("artistUrl")
     @Expose
     private String artistUrl;
-
     @SerializedName("genres")
     @Expose
     private List<Genre> genres = null;

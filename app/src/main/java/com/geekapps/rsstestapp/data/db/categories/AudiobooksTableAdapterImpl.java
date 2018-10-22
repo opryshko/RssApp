@@ -11,6 +11,7 @@ import com.geekapps.rsstestapp.data.network.pojo.category.MediaItem;
 import java.util.List;
 
 public class AudiobooksTableAdapterImpl extends BaseCategoryTableAdapter {
+
     public AudiobooksTableAdapterImpl(Context context) {
         super(context);
     }

@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DetailInformationTableAdapterImpl implements DetailInformationTableAdapter {
+
     protected DbHelper dbHelper;
 
     public DetailInformationTableAdapterImpl(Context context) {
@@ -45,16 +46,19 @@ public class DetailInformationTableAdapterImpl implements DetailInformationTable
     public DetailInformationItem getDetail(int id) {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
-        Cursor cursor = db.query(dbHelper.TABLE_MEDIA_DETAIL_INFORMATION, new String[]{dbHelper.FIELD_ID,
-                        dbHelper.FIELD_NAME, dbHelper.FIELD_ARTIST, dbHelper.FIELD_LOGO, dbHelper.FIELD_PRICE, dbHelper.FIELD_CURRENCY,
-                        dbHelper.FIELD_COUNTRY, dbHelper.FIELD_RELEASE_DATE, dbHelper.FIELD_GENRE, dbHelper.FIELD_DESCRIPTION},
+        Cursor cursor = db.query(dbHelper.TABLE_MEDIA_DETAIL_INFORMATION,
+                new String[]{dbHelper.FIELD_ID, dbHelper.FIELD_NAME, dbHelper.FIELD_ARTIST,
+                        dbHelper.FIELD_LOGO, dbHelper.FIELD_PRICE, dbHelper.FIELD_CURRENCY,
+                        dbHelper.FIELD_COUNTRY, dbHelper.FIELD_RELEASE_DATE, dbHelper.FIELD_GENRE,
+                        dbHelper.FIELD_DESCRIPTION},
                 dbHelper.FIELD_ID + "=?",
                 new String[]{String.valueOf(id)}, null, null, null, null);
 
         if (cursor != null && cursor.moveToFirst()) {
-            return new DetailInformationItem(cursor.getInt(0), cursor.getString(1), cursor.getString(2),
-                    cursor.getString(3), cursor.getDouble(4), cursor.getString(5), cursor.getString(6),
-                    cursor.getString(7), cursor.getString(8), cursor.getString(9));
+            return new DetailInformationItem(cursor.getInt(0), cursor.getString(1),
+                    cursor.getString(2), cursor.getString(3), cursor.getDouble(4),
+                    cursor.getString(5), cursor.getString(6), cursor.getString(7),
+                    cursor.getString(8), cursor.getString(9));
         }
 
         return null;
@@ -95,7 +99,8 @@ public class DetailInformationTableAdapterImpl implements DetailInformationTable
     public int updateDetail(DetailInformationItem detail) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
-        return db.update(dbHelper.TABLE_MEDIA_DETAIL_INFORMATION, getContentValues(detail), dbHelper.FIELD_ID + " = ?",
+        return db.update(dbHelper.TABLE_MEDIA_DETAIL_INFORMATION, getContentValues(detail),
+                dbHelper.FIELD_ID + " = ?",
                 new String[]{String.valueOf(detail.getId())});
     }
 

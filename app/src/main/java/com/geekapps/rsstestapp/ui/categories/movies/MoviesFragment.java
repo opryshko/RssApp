@@ -17,6 +17,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MoviesFragment extends BaseCategoryFragment implements MoviesView {
+
     @BindView(R.id.reload_data_view)
     View reloadDataView;
 

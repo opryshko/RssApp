@@ -23,6 +23,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainActivity extends BaseMvpActivity {
+
     @BindView(R.id.navigation)
     BottomNavigationView bottomNavigationView;
     @BindView(R.id.viewpager)

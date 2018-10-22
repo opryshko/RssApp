@@ -6,6 +6,7 @@ import com.geekapps.rsstestapp.mvp.BaseMvpView;
 import java.util.List;
 
 public interface FavouritesView extends BaseMvpView {
+
     void showDetailInformation(Integer id);
 
     void initRecyclerView();

@@ -13,6 +13,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
 public class PodcastsPresenter extends BaseCategoryPresenter {
+
     private PodcastsView view;
     private PodcastsModel model;
 

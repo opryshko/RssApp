@@ -22,6 +22,7 @@ import okhttp3.ResponseBody;
 import retrofit2.Response;
 
 public class PodcastsModelImpl extends BaseMvpModel implements PodcastsModel {
+
     private RssTestAppService api = RssTestAppClient.getClientForCategory().create(RssTestAppService.class);
     private CategoryTableAdapter categoryTableAdapter;
 

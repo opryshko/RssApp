@@ -7,6 +7,7 @@ import com.geekapps.rsstestapp.mvp.BaseMvpView;
 import java.util.List;
 
 public abstract class BaseCategoryPresenter extends BaseMvpPresenter {
+
     public static CallBack callBack;
 
     public BaseCategoryPresenter(BaseMvpView view) {

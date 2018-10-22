@@ -17,6 +17,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class AudiobooksFragment extends BaseCategoryFragment implements AudiobooksView {
+
     @BindView(R.id.reload_data_view)
     View reloadDataView;
 
@@ -29,6 +30,7 @@ public class AudiobooksFragment extends BaseCategoryFragment implements Audioboo
         unbinder = ButterKnife.bind(this, rootView);
         presenter = new AudiobooksPresenter(this);
         detailInformationFragment = new DetailInformationFragment();
+
         return rootView;
     }
 

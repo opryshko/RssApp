@@ -17,6 +17,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class PodcastsFragment extends BaseCategoryFragment implements PodcastsView {
+
     @BindView(R.id.reload_data_view)
     View reloadDataView;
 

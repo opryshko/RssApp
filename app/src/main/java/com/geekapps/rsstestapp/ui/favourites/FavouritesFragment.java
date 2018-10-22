@@ -22,6 +22,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class FavouritesFragment extends BaseMvpFragment implements FavouritesView, BaseCategoryPresenter.CallBack {
+
     @BindView(R.id.recycler_view)
     RecyclerView recyclerView;
     @BindView(R.id.tv_placeholder)

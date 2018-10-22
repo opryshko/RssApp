@@ -16,6 +16,7 @@ import com.geekapps.rsstestapp.data.network.pojo.category.MediaItem;
 import java.util.List;
 
 public class MediaAdapter extends RecyclerView.Adapter<MediaAdapter.MediaViewHolder> {
+
     List<MediaItem> medias;
     CategoryView categoryView;
 

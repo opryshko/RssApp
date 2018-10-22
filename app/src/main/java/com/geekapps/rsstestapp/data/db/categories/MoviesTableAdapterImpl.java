@@ -11,6 +11,7 @@ import com.geekapps.rsstestapp.data.network.pojo.category.MediaItem;
 import java.util.List;
 
 public class MoviesTableAdapterImpl extends BaseCategoryTableAdapter {
+
     public MoviesTableAdapterImpl(Context context) {
         super(context);
     }
@@ -64,6 +65,7 @@ public class MoviesTableAdapterImpl extends BaseCategoryTableAdapter {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         long count = DatabaseUtils.queryNumEntries(db, dbHelper.TABLE_MOVIES);
         db.close();
+
         return count;
     }
 

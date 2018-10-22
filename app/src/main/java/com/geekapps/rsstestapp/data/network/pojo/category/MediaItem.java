@@ -7,6 +7,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class MediaItem implements Comparable<MediaItem>, FavouritesListItem {
+
     @SerializedName("artistName")
     @Expose
     private String artistName;

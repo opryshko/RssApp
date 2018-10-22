@@ -17,8 +17,8 @@ import com.geekapps.rsstestapp.R;
 import butterknife.Unbinder;
 
 public abstract class BaseMvpFragment extends Fragment implements BaseMvpView {
-    protected Unbinder unbinder;
 
+    protected Unbinder unbinder;
     protected View rootView;
     @Nullable
     protected Toolbar toolbar;

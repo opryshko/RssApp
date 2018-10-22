@@ -13,6 +13,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
 public class AudiobooksPresenter extends BaseCategoryPresenter {
+
     private AudiobooksView view;
     private AudiobooksModel model;
 
@@ -29,7 +30,6 @@ public class AudiobooksPresenter extends BaseCategoryPresenter {
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(this::handleGetTop25AudiobooksResponse, this::loadDataFromDb);
-
     }
 
     private void handleGetTop25AudiobooksResponse(MediaContent mediaContent) {

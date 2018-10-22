@@ -2,7 +2,6 @@ package com.geekapps.rsstestapp.ui.favourites.impl;
 
 import com.geekapps.rsstestapp.R;
 import com.geekapps.rsstestapp.data.network.pojo.category.MediaItem;
-import com.geekapps.rsstestapp.data.network.pojo.favourites.FavouritesListItem;
 import com.geekapps.rsstestapp.mvp.BaseMvpPresenter;
 import com.geekapps.rsstestapp.ui.favourites.FavouritesModel;
 import com.geekapps.rsstestapp.ui.favourites.FavouritesView;
@@ -10,6 +9,7 @@ import com.geekapps.rsstestapp.ui.favourites.FavouritesView;
 import java.util.List;
 
 public class FavouritesPresenter extends BaseMvpPresenter {
+
     private FavouritesView view;
     private FavouritesModel model;
 
@@ -44,5 +44,4 @@ public class FavouritesPresenter extends BaseMvpPresenter {
             view.showEmptyListPlaceholder();
         else view.hideEmptyListPlaceholder();
     }
-
 }

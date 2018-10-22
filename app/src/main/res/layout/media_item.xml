@@ -47,8 +47,8 @@
                 android:layout_below="@id/tv_name" />
             <ImageView
                 android:id="@+id/iv_star"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="16dp"

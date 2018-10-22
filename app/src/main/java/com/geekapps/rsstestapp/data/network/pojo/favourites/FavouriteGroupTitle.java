@@ -1,6 +1,7 @@
 package com.geekapps.rsstestapp.data.network.pojo.favourites;
 
 public class FavouriteGroupTitle implements FavouritesListItem {
+
     private String title;
 
     public FavouriteGroupTitle(String title) {

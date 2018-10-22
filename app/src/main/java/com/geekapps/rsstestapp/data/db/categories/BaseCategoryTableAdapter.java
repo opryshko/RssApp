@@ -12,6 +12,7 @@ import java.util.Collections;
 import java.util.List;
 
 public abstract class BaseCategoryTableAdapter implements CategoryTableAdapter {
+
     protected DbHelper dbHelper;
 
     public BaseCategoryTableAdapter(Context context) {

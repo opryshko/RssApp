@@ -22,6 +22,7 @@ import okhttp3.ResponseBody;
 import retrofit2.Response;
 
 public class AudiobooksModelImpl extends BaseMvpModel implements AudiobooksModel {
+
     private RssTestAppService api = RssTestAppClient.getClientForCategory().create(RssTestAppService.class);
     private CategoryTableAdapter categoryTableAdapter;
 

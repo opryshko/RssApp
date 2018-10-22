@@ -1,6 +1,7 @@
 package com.geekapps.rsstestapp.mvp;
 
 public abstract class BaseMvpPresenter {
+
     private BaseMvpView mView;
 
     public BaseMvpPresenter(BaseMvpView view) {

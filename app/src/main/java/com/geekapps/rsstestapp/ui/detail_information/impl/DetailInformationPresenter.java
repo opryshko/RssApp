@@ -18,6 +18,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
 public class DetailInformationPresenter extends BaseMvpPresenter {
+
     private DetailInformationView view;
     private DetailInformationModel model;
     private Integer currentCollectionId;
@@ -81,5 +82,4 @@ public class DetailInformationPresenter extends BaseMvpPresenter {
         showError(throwable);
         view.showReloadDataView();
     }
-
 }

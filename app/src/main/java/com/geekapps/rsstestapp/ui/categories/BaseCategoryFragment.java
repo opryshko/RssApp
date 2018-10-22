@@ -15,6 +15,7 @@ import java.util.List;
 import butterknife.BindView;
 
 public abstract class BaseCategoryFragment extends BaseMvpFragment implements CategoryView {
+
     @BindView(R.id.recycler_view)
     protected RecyclerView recyclerView;
     protected DetailInformationFragment detailInformationFragment;
