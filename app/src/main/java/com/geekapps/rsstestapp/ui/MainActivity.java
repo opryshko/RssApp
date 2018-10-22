@@ -55,16 +55,12 @@ public class MainActivity extends BaseMvpActivity {
                         viewPager.setCurrentItem(3);
                         break;
                 }
+
                 clearFragmentsBackstack();
                 return true;
             }
         });
-        categoryFragmentContainer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-            }
-        });
         setupViewPager();
     }
 

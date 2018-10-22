@@ -1,7 +1,5 @@
 package com.geekapps.rsstestapp.data.error;
 
-import com.brilliatnbrains.markchat.data.error.ErrorUtils;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -24,7 +22,7 @@ public class NetworkErrorChecker extends ErrorChecker<Response> {
     public FailedRequestException createException() {
         try {
             String errorJson = objectToCheck.errorBody().string();
-            String result = ErrorUtils.INSTANCE.convertError(errorJson);
+            String result = ErrorUtils.convertError(errorJson);
             JSONObject errorObject = new JSONObject(errorJson);
             if (objectToCheck.code() == 422) return buildValidationException(errorJson);
 
